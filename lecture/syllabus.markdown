@@ -10,40 +10,21 @@ layout: default
 
 ## Grading
 
-- Homeworks: 40% (8 of them)
+- First midterm: 20%
 
-- Quizzes: 30% (8 of them)
+- Second midterm: 20%
 
-- Carmen quizzes: 10% (16 of them)
+- Programming assignments: 40%
 
-- Final exam: 20% (Tue, June 5, 1:30-3:18pm, same room as lectures)
+- Final exam: 20%
 
 You can see your grades on Carmen.
 
 ## Quizzes & exams
 
-There is no midterm, per se. The quizzes, collectively, are your
-midterm (so to speak). Quizzes occur every Wednesday; they are short
-(we still have lecture on Wednesdays, a quiz should only take at most
-20 minutes), and are designed to reinforce the topics.
-
-The final exam will look like several quizzes all in one test. So the
-format will be just like the quizzes. Obviously, the final exam is
-"cumulative" (covers everything we learn in the course).
-
-## Carmen quizzes
-
-There are also required quizzes on Carmen. These are short and mostly
-test small details. You can take a Carmen quiz as many times as you'd
-like, any time you'd like.
-
 ## Homeworks
 
-Homeworks are always due on a Monday, by 11:00pm. Your homework
-should be sent to me by email:
-[pawas.ranjan@gmail.com](mailto:pawas.ranjan@gmail.com) (attach your
-files; do not paste into Microsoft Word, just literally attach `.cpp`
-and `.h` files).
+Submit your homeworks using carmen.
 
 This material will be challenging. Consider the class like a math or
 physics class. It will require a lot of thinking, staring at the
@@ -72,31 +53,22 @@ Or if you prefer,
 
 ## Text book
 
+Walter Savitch, Problem Solving with C++, 8th Edition.
+
 The book is not required, but you may find it highly useful. I
 generally follow the book's organization, and most homeworks are
-straight from the book.  Probably any edition would be fine; I use the
-7th edition.
-
-[Walter Savitch, Problem Solving with C++, 7th Edition](http://www.amazon.com/Problem-Solving-7th-Walter-Savitch/dp/0321531345/ref=pd_sim_b_4)
+straight from the book.  Probably any edition would be fine; 
+the latest edition is the 8th edition.
 
 ## Academic misconduct policy
 
 This course is designed for individual work.
 
-The only work required of you outside of class is homework assignments
-and Carmen quizzes. Obviously, there is no tolerance for cheating
-(looking at others' work) during in-class quizzes, Carmen quizzes, or
-the final exam. However, you may participate in a reasonable amount of
-collaboration over homeworks. Collaboration is limited to: discussing
-how to approach the solution, or how to solve small coding problems;
-looking at the Internet for information about general topics, not
-solutions to the particulars of the homework assignment. It is
-considered academic misconduct if you copy significant portions of
-code from anyone (the Internet included). Your solutions should not
-bear an uncanny resemblance to anyone else's code. It should be clear
-to you what I mean by this; do not test the limits of this (fairly
-liberal) policy. Violators will be referred to the OSU Committee on
-Academic Misconduct (COAM).
+All programming assignments are to be done by yourself.
+You may discuss labs or assignments with other students in the class
+but DO NOT LOOK AT ANYONE'S CODE OTHER THAN YOUR OWN.
+Needless to say, you should not share or copy anyone else's code.
+
 
 ## Disability statement
 
