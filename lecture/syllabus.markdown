@@ -20,8 +20,6 @@ layout: default
 
 You can see your grades on Carmen.
 
-## Quizzes & exams
-
 ## Homeworks
 
 Submit your homeworks using carmen.
