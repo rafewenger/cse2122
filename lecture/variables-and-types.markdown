@@ -115,15 +115,14 @@ if(x < 2.60001 && x > 2.59999) // YES, GOOD
 }
 {% endhighlight %}
 
-For more gory details, see [this article](http://www.cygnus-software.com/papers/comparingfloats/comparingfloats.htm) or the [Wikipedia article](http://en.wikipedia.org/wiki/Floating_point).
+For more gory details, see [this article](http://randomascii.wordpress.com/category/floating-point) or the [Wikipedia article](http://en.wikipedia.org/wiki/Floating_point).
 
 ## String type
 
 A "string" is literally a collection of characters (`char`). C++ allows us to
 type strings without resorting to creating lots of `char` variables. So the
 string `"hello"` is literally the collection of `char` thingies `'h'` `'e'`
-`'l'` `'l'` `'o'` (there is actually another special `char` at the end that
-tells the computer the string is finished). The double-quotes `"` tell C++ we
+`'l'` `'l'` `'o'`. The double-quotes `"` tell C++ we
 are using a string; single quotes `'` tell C++ we are referring to a `char`
 (which is only one thing, one symbol).
 
