@@ -207,13 +207,7 @@ To do so, one repeats repeating in a while loop until the read fails:
 Note the first read before entering the **while** loop.
 
 The *fin.fail()* function is true when the read fails.
-A read fails because:
-
-- The end of file is reached.
-- A read error such as trying to read a character string as an integer.
-
 Once an input operation fails, all subsequent input operations will fail.
-
 The statement *while (fin)* is equivalent to *while(!fin.fail())*.
 
 Program [readFile3.cpp](../code/readFile3) is an example
@@ -221,3 +215,25 @@ of a program which reads input until the read operation fails.
 Program [readFile4.cpp](../code/readFile4) is another example
 of a program which reads input until the read operation fails
 using *while (fin)* instead of *while(!fin.fail())*.
+
+A read fails because:
+
+- The end of file is reached.
+- A read error such as trying to read a character string as an integer.
+
+When a read fails because of a read error, 
+one usually wants to print an error message and sometimes halt.
+The function *fin.eof()* is true when the end of file is reached.
+To check if the program failed for some reason other than end of file,
+use *if (!fin.eof())*:
+{% highlight cpp %}
+  if (!fin.eof())		// check for error  
+    {
+      cerr << "Error reading file " << file_name << endl;
+      exit(20);
+    }
+{% endhighlight %}
+Note the use of **cerr** instead of **cout** for printing the error message.
+The command **exit(20)** exits the program on an error and returns
+the code integer 20.
+
