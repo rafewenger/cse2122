@@ -1,5 +1,29 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css"><style type="text/css">
+---
+title: CSE 2122
+layout: home
+---
+
+<div class="left" style="margin-top: -10px;">
+
+<div id="cse" style="width: 100%;">Loading</div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript"> 
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchOptions = {};
+    var googleAnalyticsOptions = {};
+    googleAnalyticsOptions['queryParameter'] = 'q';
+    googleAnalyticsOptions['categoryParameter'] = '';
+    customSearchOptions['googleAnalyticsOptions'] = googleAnalyticsOptions;
+  
+    var customSearchControl = new google.search.CustomSearchControl(
+      '007138713826802658404:o_1kwmfq9k4', customSearchOptions);
+    customSearchControl.setResultSetSize(google.search.Search.SMALL_RESULTSET);
+    customSearchControl.draw('cse');
+  }, true);
+</script>
+<link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css" />
+<style type="text/css">
   .cse .gsc-control-cse, .gsc-control-cse {
     padding: 0;
   }
@@ -143,32 +167,7 @@
   .gs-promotion .gs-visibleUrl-short {
     color: #008000;
   }
-</style></head><body>---
-title: CSE 2122
-layout: home
----
-
-<div class="left" style="margin-top: -10px;">
-
-<div id="cse" style="width: 100%;">Loading</div>
-<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-<script type="text/javascript"> 
-  google.load('search', '1', {language : 'en'});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var googleAnalyticsOptions = {};
-    googleAnalyticsOptions['queryParameter'] = 'q';
-    googleAnalyticsOptions['categoryParameter'] = '';
-    customSearchOptions['googleAnalyticsOptions'] = googleAnalyticsOptions;
-  
-    var customSearchControl = new google.search.CustomSearchControl(
-      '007138713826802658404:o_1kwmfq9k4', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.SMALL_RESULTSET);
-    customSearchControl.draw('cse');
-  }, true);
-</script>
-
-
+</style>
 
     <ul class="index-links">
         <li><a href="lecture/syllabus.html">Syllabus</a></li>
@@ -207,23 +206,14 @@ layout: home
 
     <div id="contact-front">
         <p>
-            <a href="mailto:pawas.ranjan@gmail.com">pawas.ranjan@gmail.com</a>
-            <br>
-            <a href="http://www.google.com/talk/service/badge/Start?tk=z01q6amlqnoon14fnt6334buq61fea0i4icja4nq58h3sgf9nbje342fatjfn3sn4gq6kkjt145uq473se42hrj2rismtrlst9ecd7thn3bfumfl0ha4mp80a6luih0n16v14s5uvgajcannpn56523d4pur2bkbh2978rgj6" target="_blank" title="Click here to chat with Pawas">Chat with Pawas</a><img style="border: medium none ; margin: 0pt; padding: 0pt 2px 0pt 0pt;" src="http://www.google.com/talk/service/badge/Show?tk=z01q6amlqnoon14fnt6334buq61fea0i4icja4nq58h3sgf9nbje342fatjfn3sn4gq6kkjt145uq473se42hrj2rismtrlst9ecd7thn3bfumfl0ha4mp80a6luih0n16v14s5uvgajcannpn56523d4pur2bkbh2978rgj6&amp;w=9&amp;h=9" alt="" height="9" width="9"><img style="border: medium none ; margin: 0pt; padding: 0pt 2px 0pt 0pt;" src="http://www.google.com/talk/service/resources/chaticon.gif" alt="" height="14" width="16">
-            <br>
+            <a href="mailto:wenger@cse.ohio-state.edu">wenger@cse.ohio-state.edu</a>
+            <br/>
             Office hours (Dreese Labs 474):
-            <br>
-            Mon  2:30 pm - 3:30 pm (after class)
-            <br>
-            Wed 12:00 pm - 1:00 pm (before class)
-            <br>
-            Fri 12:00 pm - 1:00 pm (before class)
         </p>
     </div>
 
     <p>
-      Final exam:<br>
-      Tue, June 5, 1:30-3:18pm, BO 316
+      Final exam:<br/>
     </p>
 
     <ul class="index-links">
@@ -250,4 +240,3 @@ layout: home
 </div>
 
 
-</body></html>
