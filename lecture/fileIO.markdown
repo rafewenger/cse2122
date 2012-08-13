@@ -18,6 +18,7 @@ To use a file stream operation, we include the file *fstream*:
 {% endhighlight %}
 
 To write a file:
+
 1. Create an output stream object;
 2. Establish connection to a file;
 3. Check validity of the connection;
