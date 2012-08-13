@@ -34,14 +34,14 @@ To declare and open the file stream:
 
   fout.open("hellofile.txt", ios::out);    // open file file_name for output
 {% endhighlight %}
-The name of the file stream is **fout**.
+The name of the file stream is *fout*.
 We used this name because it is similar to **cout**.
 However, we could have used any unused variable name for the file handler 
 (just like other variables).
 
 Note the '**o**' in the file stream type **ofstream**.
 This indicates an output file stream.
-The flag **ios::out** in the call to **fout.open**.
+The flag **ios::out** in the call to *fout.open*.
 opens the file for output.
 
 Opening a file for output can fail because the file does not exist
@@ -58,8 +58,8 @@ To check if the file is open:
 
 We write to the file in the same way that we write to the terminal
 using **cout**.
-Note the similarities between **cout** and **fout**.  Everything we can do with
-**cout** also applies to **fout**.
+Note the similarities between **cout** and *fout*.  Everything we can do with
+**cout** also applies to *fout*.
 {% highlight cpp %}
   // write text to the file
   fout << "Hello World!" << endl;
@@ -101,8 +101,8 @@ cin >> file_name;
 {% endhighlight %}
 
 Unfortunately, the **open()** function only takes C style strings.
-To convert the C++ string **file_name** into a C style string, 
-use the member function **file_name.c_str()**:
+To convert the C++ string *file_name* into a C style string, 
+use the member function *file_name.c_str()*:
 {% highlight cpp %}
 fout.open(file_name.c_str(), ios::out);
 {% endhighlight %}
