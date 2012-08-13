@@ -17,6 +17,9 @@ To use a file stream operation, we include the file *fstream*:
 #include <fstream>
 {% endhighlight %}
 
+
+# Writing to a File
+
 To write a file:
 
 1. Create an output stream object;
@@ -106,4 +109,7 @@ fout.open(file_name.c_str(), ios::out);
 
 Program [writeFile3.cpp](../../code/writeFile3) is an example
 of a program which reads a file name.
+
+
+# Reading from a File
 
