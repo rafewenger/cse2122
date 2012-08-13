@@ -25,37 +25,61 @@ To write a file:
 4. Start writing;
 5. Close the file stream.
 
-Example:
+To declare and open the file stream:
 {% highlight cpp %}
-#include <cstdlib>           // function exit() is in cstdlib
-#include <fstream>         // class ofstream() is in fstream
-#include <iostream>
-
-using namespace std;
-
-int main()
-{
   ofstream fout;                           // declare an output file stream
 
   fout.open("hellofile.txt", ios::out);    // open file file_name for output
+{% endhighlight %}
+The name of the file stream is *fout*.
+We used this name because it is similar to *cout*.
+However, we could have used any unused variable name for the file handler 
+(just like other variables).
 
+Note that *o* in the file stream type *ofstream*.
+This indicates an output file stream.
+The flag *ios::out* in the call to *fout.open*.
+opens the file for output.
+
+Opening a file for output can fail because the file does not exist
+or is not in the given directory or because the program does not
+have permission to write to the file.
+To check if the file is open:
+{% highlight cpp %}
   if (!fout.is_open())                     // check if file is opened for output
     {
       cerr << "Unable to open file hellofile.txt." << endl;
       exit(10);
     }
+{% endhighlight %}
 
-  cout << "Writing to file hellofile.txt." << endl;
-
+We write to the file in the same way that we write to the terminal
+using *cout*.
+Note the similarities between *cout* and *fout*.  Everything we can do with
+*cout* also applies to *fout*.
+{% highlight cpp %}
   // write text to the file
   fout << "Hello World!" << endl;
   fout << "Goodbye World!" << endl;
-
-  // close file stream fout
-  fout.close();
-
-  return 0;  
-}
-
 {% endhighlight %}
+
+To close the file stream:
+{% highlight cpp %}
+  fout.close();       // close file stream fout
+{% endhighlight %}
+When the program ends,
+the operating system closes all files streams.
+However, it is very, very good programming practice to close
+a file stream when you are done using the file.
+Programs which use many multiple files but do not close those files
+will eventually run out of resources.
+If I catch you forgetting to close a file stream 
+on your programming assignments,
+I will deduct points.
+
+Program (writeFile1.cpp)[../code/writeFile1) is a complete example 
+of a program which writes to a file.
+
+Program (writeMultiFile)[../code/writeMultiFile) is an example
+of a program which writes to more than one file.
 
