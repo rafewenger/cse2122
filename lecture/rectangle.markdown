@@ -11,4 +11,4 @@ Call by reference: [rectangle_reference.cpp](/cse2122/code/rectangle_reference.h
 
 Using pointers (This approach will not be used extensively, except for Linked lists): [rectangle_pointers.cpp](/cse2122/code/rectangle_pointers.html)
 
-Making the functions a part of the Rectangle class: [rectangle.h](/cse230/code/rectangle_header.html)  [rectangle.cpp](/cse2122/code/rectangle.html)
+Making the functions a part of the Rectangle class: [rectangle.h](/cse2122/code/rectangle_header.html)  [rectangle.cpp](/cse2122/code/rectangle.html)
