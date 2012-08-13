@@ -237,3 +237,14 @@ Note the use of **cerr** instead of **cout** for printing the error message.
 The command **exit(20)** exits the program on an error and returns
 the code integer 20.
 
+Program [readFile5.cpp](../code/readFile5) is an example
+of a program which checks for read errors.
+
+
+# Common Errors
+
+* Writing to a file which was opened for reading;
+* Reading from a file which was opened for writing;
+* Forgetting to open a file;
+* Not checking for read failure.
+
