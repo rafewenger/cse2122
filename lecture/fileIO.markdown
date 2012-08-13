@@ -194,3 +194,25 @@ fin.open(file_name.c_str(), ios::in);       // open file file_name for input
 Program [readFile2.cpp](../code/readFile2) is an example
 of a program which reads a file name.
 
+Often, one wants to read all the data in the file.
+To do so, one repeats repeating in a while loop until the read fails:
+{% highlight cpp %}
+    fin >> x;
+    while (!fin.fail())
+    {
+        cout << "Read integer: " << x << endl;
+        fin >> x;
+    }
+{% endhighlight %}
+Note the first read before entering the **while** loop.
+
+The *fin.fail()* function is true when the read fails.
+A read fails because:
+
+- The end of file is reached.
+- A read error such as trying to read a character string as an integer.
+
+Once an input operation fails, all subsequent input operations will fail.
+
+Program [readFile3.cpp](../code/readFile3) is an example
+of a program which reads input until the read operation fails.
