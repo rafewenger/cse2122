@@ -116,7 +116,7 @@ use the member function *file_name.c_str()*:
 fout.open(file_name.c_str(), ios::out);
 {% endhighlight %}
 
-Program [writeFile3.cpp](../code/writeFile3) is an example
+Program [writeFile2.cpp](../code/writeFile2) is an example
 of a program which reads a file name.
 
 
@@ -181,4 +181,16 @@ a file stream when you are done using the file.
 
 Program [readFile1.cpp](../code/readFile1) is a complete example 
 of a program which reads from a file.
+
+As with writing to a file, the program often prompts
+for a file name,
+and then opens the file with the given file name.
+The file name must be converted to a C style string
+for the function **open**:
+{% highlight cpp %}
+fin.open(file_name.c_str(), ios::in);       // open file file_name for input
+{% endhighlight %}
+
+Program [readFile2.cpp](../code/readFile2) is an example
+of a program which reads a file name.
 

@@ -1,5 +1,5 @@
 ---
-title: writeFile3.cpp (Write to a file)
+title: writeFile2.cpp (Write to a file)
 layout: default
 ---
 
