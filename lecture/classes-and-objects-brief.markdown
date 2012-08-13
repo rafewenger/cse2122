@@ -4,7 +4,7 @@ layout: default
 ---
 
 At this point in the class, all we have seen are
-[variables and types](/lecture/variables-and-types.html). We'll look
+[variables and types](variables-and-types). We'll look
 at "classes" very briefly here, so we can become familiar with the
 concept before we truly exploit it.
 
