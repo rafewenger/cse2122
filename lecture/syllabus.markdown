@@ -63,7 +63,7 @@ the latest edition is the 8th edition.
 This course is designed for individual work.
 
 All programming assignments are to be done by yourself.
-You may discuss labs or assignments with other students in the class
+You may discuss programming assignments with other students in the class
 but DO NOT LOOK AT ANYONE'S CODE OTHER THAN YOUR OWN.
 Needless to say, you should not share or copy anyone else's code.
 

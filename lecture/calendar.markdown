@@ -25,10 +25,11 @@ Text: "Problem Solving with C++" by Walter Savitch, 8th edition.
 * Week 5: 
     - Linked lists and trees (Chapter 13).
 * Week 6: 
-    - Classes and object oriented programming (Chapters 10 \& 11).
+    - Classes and object oriented programming (Chapters 10).
+    - Class inheritance (Sections 15.1 \& 15.2).
     - Splitting Code (Section 12.1).
 * Week 7:
-    - Polymorphism (Chapter 15).
+    - Polymorphism (Section 15.3).
 * Week 8:
     - Recursion (Chapter 14).
 * Week 9:
