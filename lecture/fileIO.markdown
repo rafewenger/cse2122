@@ -116,7 +116,7 @@ use the member function *file_name.c_str()*:
 fout.open(file_name.c_str(), ios::out);
 {% endhighlight %}
 
-Program [writeFile3.cpp](../../code/writeFile3) is an example
+Program [writeFile3.cpp](../code/writeFile3) is an example
 of a program which reads a file name.
 
 
