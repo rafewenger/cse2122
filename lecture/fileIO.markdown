@@ -214,5 +214,10 @@ A read fails because:
 
 Once an input operation fails, all subsequent input operations will fail.
 
+The statement *while (fin)* is equivalent to *while(!fin.fail())*.
+
 Program [readFile3.cpp](../code/readFile3) is an example
 of a program which reads input until the read operation fails.
+Program [readFile4.cpp](../code/readFile4) is another example
+of a program which reads input until the read operation fails
+using *while (fin)* instead of *while(!fin.fail())*.
