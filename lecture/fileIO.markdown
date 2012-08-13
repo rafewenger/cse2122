@@ -36,7 +36,7 @@ We used this name because it is similar to *cout*.
 However, we could have used any unused variable name for the file handler 
 (just like other variables).
 
-Note that *o* in the file stream type *ofstream*.
+Note the '*o*' in the file stream type *ofstream*.
 This indicates an output file stream.
 The flag *ios::out* in the call to *fout.open*.
 opens the file for output.
@@ -77,9 +77,33 @@ If I catch you forgetting to close a file stream
 on your programming assignments,
 I will deduct points.
 
-Program (writeFile1.cpp)[../code/writeFile1) is a complete example 
+Program [writeFile1.cpp](../code/writeFile1) is a complete example 
 of a program which writes to a file.
 
-Program (writeMultiFile)[../code/writeMultiFile) is an example
+Program [writeMultiFile.cpp](../code/writeMultiFile) is an example
 of a program which writes to more than one file.
+
+We usually don't want to have the file name hard-wired into the program.
+Instead the program prompts for a file name,
+reads the filename into a C++ string 
+and then opens the file with the given file name.
+For example:
+{% highlight cpp %}
+#include <string>
+
+string file_name;
+
+cout << "Enter file name: ";
+cin >> file_name;
+{% endhighlight %}
+
+Unfortunately, the *open()* function only takes C style strings.
+To convert the C++ string *file_name* into a C style string, 
+use the member function *file_name.c_str()*:
+{% highlight cpp %}
+fout.open(file_name.c_str(), ios::out);
+{% endhighlight %}
+
+Program [writeFile3.cpp](../../code/writeFile3) is an example
+of a program which reads a file name.
 
