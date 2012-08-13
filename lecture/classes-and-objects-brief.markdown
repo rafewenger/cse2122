@@ -49,5 +49,5 @@ int main()
 {% endhighlight %}
 
 Classes will appear again in the
-[function lecture notes](/lecture/functions.html) where we'll add
+[function lecture notes](functions.html) where we'll add
 functions *inside* the classes.
