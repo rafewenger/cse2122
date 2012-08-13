@@ -5,11 +5,11 @@ layout: default
 
 **Note: Code for the complex numbers class discussed during lectures can be found here:**
 
-**[complex.h](/cse230/code/complex_h.html) : Contains the declaration of the Complex class**
+**[complex.h](/cse2122/code/complex_h.html) : Contains the declaration of the Complex class**
 
-**[complex.cpp](/cse230/code/complex_cpp.html) : Contains definitions of the functions belonging to class Complex**
+**[complex.cpp](/cse2122/code/complex_cpp.html) : Contains definitions of the functions belonging to class Complex**
 
-**[main.cpp](/cse230/code/complex_main_cpp.html) : Contains main() function that uses the Complex class**
+**[main.cpp](/cse2122/code/complex_main_cpp.html) : Contains main() function that uses the Complex class**
 
 **All the files need to be put together under the same project in Visual Studio/CodeBlocks/Xcode/Eclipse (just like Homework 4).**
 
@@ -130,7 +130,7 @@ We really want a player to be a "kind of" agent and an agent a "kind
 of" object. This is called "inheritance." We can diagram it like so
 (in "UML" format):
 
-![Class diagram (no methods)](/cse230/images/class-diagram-no-methods.png "Class diagram [no methods]")
+![Class diagram (no methods)](/cse2122/images/class-diagram-no-methods.png "Class diagram [no methods]")
 
 The arrows mean that a class *inherits* properties from the parent
 class (what an arrow points to). So a Player automatically has the
@@ -143,7 +143,7 @@ we put functions inside the classes themselves. (And we call typically
 them "methods" when we do that, rather than "functions.") So our
 diagram now shows methods as well:
 
-![Class diagram (with methods)](/cse230/images/class-diagram-methods.png "Class diagram [with methods]")
+![Class diagram (with methods)](/cse2122/images/class-diagram-methods.png "Class diagram [with methods]")
 
 Classes inherit methods as well as properties. So the Player class
 automatically has access to the method `walk_one_step()`, which comes
@@ -304,6 +304,6 @@ This means that `position_y` in the method is the `position_y` of the
 `me` object.
 
 Continue to
-[Classes and object orientation (part 2)](/cse230/lecture/classes-and-object-orientation-2.html)
+[Classes and object orientation (part 2)](/cse2122/lecture/classes-and-object-orientation-2.html)
 to learn how to create complete programs.
 

@@ -16,14 +16,14 @@ as efficient at "jumping to the middle" and grabbing a value, but they
 can grow and shrink without requiring copying the whole list.
 
 **(Note: download all the code in these lecture notes as a complete
-program: [list.cpp](/cse230/code/list-cpp.html))**
+program: [list.cpp](/cse2122/code/list-cpp.html))**
 
 ## How a linked list works
 
 A linked list is composed of "nodes." Each node is a value plus a
 pointer to the next node. Here is the typical linked list diagram:
 
-![linked list](/cse230/images/linked-list.png "linked list")
+![linked list](/cse2122/images/linked-list.png "linked list")
 
 So a linked list is a chain of "node" types of things. Each node must
 have (at least) two things: a value and a pointer to the next

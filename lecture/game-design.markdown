@@ -3,7 +3,7 @@ title: Object-oriented design for a game
 layout: default
 ---
 
-A game is a good domain to study object-oriented design. Since CSE 230 is not
+A game is a good domain to study object-oriented design. Since CSE 2122 is not
 an object-oriented design class (that's CSE 502 or CSE 616), I will demonstrate
 a somewhat-complicated object-oriented rather than asking you to come up with
 your own.
@@ -30,7 +30,7 @@ Private variables/methods start with a dash (-), protected variables/methods
 start with a hash (#), and public variables/methods start with a plus (+). Pure
 virtual methods are bold and italicized.
 
-![Game UML](/cse230/images/grues-uml.png "Game UML")
+![Game UML](/cse2122/images/grues-uml.png "Game UML")
 
 Here is my `main()` function:
 

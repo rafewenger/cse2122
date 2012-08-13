@@ -221,7 +221,7 @@ versa. However, each kind of loop is used equally often in practice
 because they have slightly different "styles."  First, we will look at
 how `for` loops work.
 
-![Foxtrot comic](/cse230/images/fox-loop.jpg "Foxtrot comic")
+![Foxtrot comic](/cse2122/images/fox-loop.jpg "Foxtrot comic")
 
 [see variations of this comic...](http://www.jeffpalm.com/fox/index.html)
 
@@ -434,7 +434,7 @@ particular number of times (the number of times is already known, like
 
 ## Diagram of while() loop and for() loop
 
-![Loops diagram](/cse230/images/loops-diagram.png "Loops diagram")
+![Loops diagram](/cse2122/images/loops-diagram.png "Loops diagram")
 
 ## Diagram of nested blocks
 
@@ -475,7 +475,7 @@ int main()
 }
 {% endhighlight %}
 
-![Nesting diagram](/cse230/images/nesting-diagram.png "Nesting diagram")
+![Nesting diagram](/cse2122/images/nesting-diagram.png "Nesting diagram")
 
 In the diagram, computation proceeds left-to-right; if there is no
 right branch, computation proceeds at the parent's next branch.
@@ -486,7 +486,7 @@ jumps, which are needed when the nested structures are turned into
 linear structures. Also notice the critical "back arrow" which
 produces looping behavior.
 
-![Jumping diagram](/cse230/images/jumping-diagram.png "Jumping diagram")
+![Jumping diagram](/cse2122/images/jumping-diagram.png "Jumping diagram")
 
 This "jumping" behavior can be achieved in C++ code using the `goto`
 command.  I'm not going to recommend that you use `goto` in your code,
@@ -499,7 +499,7 @@ of some noodle and try to trace back to the noodle's beginning or
 end.)
 
 <a href="http://xkcd.com/292/">
-![xkcd goto](/cse230/images/xkcd-goto.png "xkcd goto")
+![xkcd goto](/cse2122/images/xkcd-goto.png "xkcd goto")
 </a>
 
 For more information, read the classic
