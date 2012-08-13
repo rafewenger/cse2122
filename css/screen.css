@@ -37,7 +37,7 @@ h2,h3 {
 a:link, a:visited, a:hover, a:active { 
     font-weight: bold; 
     text-decoration: none; 
-    color: #0080FF;
+    color: #8000FF;
     }
 a:hover, a:active { 
     text-decoration: underline; 
