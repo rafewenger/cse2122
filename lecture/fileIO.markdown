@@ -44,9 +44,8 @@ This indicates an output file stream.
 The flag **ios::out** in the call to *fout.open*.
 opens the file for output.
 
-Opening a file for output can fail because the file does not exist
-or is not in the given directory or because the program does not
-have permission to write to the file.
+Opening a file for output can fail because the file directory does not exist
+or because the program does not have permission to write to the file.
 To check if the file is open:
 {% highlight cpp %}
   if (!fout.is_open())                     // check if file is opened for output
@@ -55,6 +54,16 @@ To check if the file is open:
       exit(10);
     }
 {% endhighlight %}
+The error message is written to **cerr** not **cout**.
+File stream **cerr** is similar to **cout** and is intended for error messages.
+The command **exit** exits the program.
+The number *10* is a return code for use by any other program
+which called this program.
+Returning any number other than *0* indicates an error,
+in this case an error opening the file.
+Complicated programs can have many different reasons for exiting.
+Returning different return codes based on the different exit points
+helps other programs determine how to handle the error.
 
 We write to the file in the same way that we write to the terminal
 using **cout**.
@@ -112,4 +121,64 @@ of a program which reads a file name.
 
 
 # Reading from a File
+
+To read from a file, we need a-priori knowledge of the file format.
+Is the file a list of integers, of floating point numbers
+of strings, or of some combination of these?
+Moreover, we need to know what each value represents,
+i.e., is it age or weight or temperature?
+
+To read from a file:
+
+1. Create an input stream object;
+2. Establish a connection to the file;
+3. Check the validity of the connection;
+4. Read from the file;
+5. Close the file.
+
+We usually also check that the read succeeded.
+
+To declare and open the file stream:
+{% highlight cpp %}
+  ifstream fin;   // declare an input file stream
+
+  fin.open("intList1.txt" , ios::in);   // open file intList.txt for input
+{% endhighlight %}
+The name of the file stream is *fin*.
+We used this name because it is similar to **cin**
+but could have used any unused variable name
+
+Note the '**i**' in the file stream type **ifstream**.
+This indicates an input file stream.
+The flag **ios::in** in the call to *fout.open*.
+opens the file for input.
+
+Opening a file for input can fail because the file does not exist
+or is not in the given directory or because the program does not
+have permission to read from the file.
+To check if the file is open:
+{% highlight cpp %}
+if (!fin.is_open())                // check if file is open for input
+    {
+      cerr << "Unable to open file intList1.txt." << endl;
+      exit(10);
+    }
+{% endhighlight %}
+
+We read from the file in the same way that we read from the terminal
+using **cin**.
+Everything we can do with **cin** also applies to *fin*.
+{% highlight cpp %}
+    fin >> x;     // read text from file
+{% endhighlight %}
+
+To close the file stream:
+{% highlight cpp %}
+  fin.close();       // close file stream fin
+{% endhighlight %}
+It is good programming practice to close
+a file stream when you are done using the file.
+
+Program [readFile1.cpp](../code/readFile1) is a complete example 
+of a program which reads from a file.
 
