@@ -45,5 +45,51 @@ c.center.x = 1.1;
 c.center.y = 2.2;
 {% endhighlight %}
 
+We can pass a class to a function.
+We usually pass a class by reference. (Why?)
+{% highlight cpp %}
+double compute_distance(Point & p1, Point & p2)
+{
+  double diffx = p1.x - p2.x;
+  double diffy = p1.y - p2.y;
+  double dist = sqrt(diffx*diffx + diffy*diffy);
 
+  return(dist);
+}
+{% endhighlight %}
 
+We can use the function *compute_distance* 
+to determine if a circle contains a point:
+{% highlight cpp %}
+bool circle_contains(Circle & c, Point & q)
+{
+  double dist = compute_distance(c.center, q);
+  if (dist <= c.radius) 
+    { return(true); }
+  else
+    { return(false); }
+}
+{% endhighlight %}
+Note that the function *compute_distance* that *p1* is the center of a circle.
+
+We could also define a member function *contains(q)* for class *Circle*
+which returns true if the circle contains point *q*.
+{% highlight cpp %}
+class Circle
+{
+public:
+    double radius;
+    Point center;  // circle center
+
+    bool contains(Point & q);
+};
+
+Circle::contains(Point & q)
+{
+  double dist = compute_distance(center, q);
+  if (dist <= radius) 
+    { return(true); }
+  else
+    { return(false); }
+}
+{% endhighlight %}
