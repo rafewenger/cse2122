@@ -70,7 +70,11 @@ bool circle_contains(Circle & c, Point & q)
     { return(false); }
 }
 {% endhighlight %}
-Note that the function *compute_distance* that *p1* is the center of a circle.
+Note that the function *compute_distance* 
+does NOT know that *p1* is the center of a circle.
+
+Program [circleContains.cpp](../code/cpp-classes/circleContains)
+is an example of a program using *compute_distance* and *circle_contains*.
 
 We could also define a member function *contains(q)* for class *Circle*
 which returns true if the circle contains point *q*.
@@ -93,3 +97,6 @@ Circle::contains(Point & q)
     { return(false); }
 }
 {% endhighlight %}
+
+Program [circleContains2.cpp](../code/cpp-classes/circleContains-2)
+is an example of a program using them member function *Circle::contains*.
