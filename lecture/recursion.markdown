@@ -130,7 +130,7 @@ much simpler.
 Fractals are self-similar patterns 
 which have similar structures at different scales.
 An example of a fractal is the Sierpinski triangle:
-{% highlight cpp %}
+<pre>
 *               
 **              
 * *             
@@ -147,7 +147,7 @@ An example of a fractal is the Sierpinski triangle:
 **  **  **  **  
 * * * * * * * * 
 ****************
-{% endhighlight %}
+</pre>
 
 To construct this triangle,
 start with the following:
