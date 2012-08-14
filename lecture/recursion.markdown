@@ -95,6 +95,25 @@ double harmonic (int n)
 }
 {% endhighlight %}
 
+As another example of recursion,
+consider a function to draw a triangle with n rows and n columns:
+
+the following function draws
+a triangle with n rows and n columns:
+{% highlight cpp %}
+void draw_tri(int n)
+{
+  if (n <= 0) { return; }
+
+  draw_tri(n-1);
+
+  for (int i = 0; i < n; i++) 
+    { cout << "*"; }
+  cout << endl;
+}
+{% endhighlight %}
+
+
 So far, we have not seen the benefit of recursion. But it's important to note
 that we can have recursion, and not have loops, but be able to accomplish all
 the same tasks. In fact, some programming languages ("functional languages"
@@ -111,7 +130,7 @@ much simpler.
 Fractals are self-similar patterns 
 which have similar structures at different scales.
 An example of a fractal is the Sierpinski triangle:
-<blockquote>
+{% highlight cpp %}
 *               
 **              
 * *             
@@ -128,7 +147,7 @@ An example of a fractal is the Sierpinski triangle:
 **  **  **  **  
 * * * * * * * * 
 ****************
-</blockquote>
+{% endhighlight %}
 
 To construct this triangle,
 start with the following:
