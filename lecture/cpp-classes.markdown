@@ -17,6 +17,7 @@ public:
 {% endhighlight %}
 *name*, *age*, *height* and *weight* are called the *class attributes*
 or *data members* of class *Person*.
+Note that the class definition must be followed by a semicolon.
 
 A class can be composed of other classes:
 For instance,
