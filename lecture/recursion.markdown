@@ -106,6 +106,33 @@ much simpler.
 > Recursion is the root of computation since it trades description for
 > time. -- *Alan J. Perlis, Epigrams on Programming*
 
+## Fractals
+
+Fractals are self-similar patterns 
+which have similar structures at different scales.
+An example of a fractal is the Sierpinski triangle:
+<blockquote>
+*               
+**              
+* *             
+****            
+*   *           
+**  **          
+* * * *         
+********        
+*       *       
+**      **      
+* *     * *     
+****    ****    
+*   *   *   *   
+**  **  **  **  
+* * * * * * * * 
+****************
+</blockquote>
+
+To construct this triangle,
+start with the following:
+
 ## Chess, Tic Tac Toe, Checkers, etc.
 
 How does a robot play a board game? It uses recursion. Consider the following general technique for Chess:
