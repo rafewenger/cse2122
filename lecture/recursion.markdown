@@ -96,9 +96,18 @@ double harmonic (int n)
 {% endhighlight %}
 
 As another example of recursion,
-consider a function to draw a triangle with n rows and n columns:
-
-the following function draws
+consider drawing a triangle with n rows and n columns,
+such as:
+<pre>
+*
+**
+***
+****
+*****
+</pre>
+Draw this triangle by first drawing a triangle with n-1 rows and n-1 columns
+and then adding the last row.
+The following is a recursive function to draw
 a triangle with n rows and n columns:
 {% highlight cpp %}
 void draw_tri(int n)
@@ -112,7 +121,6 @@ void draw_tri(int n)
   cout << endl;
 }
 {% endhighlight %}
-
 
 So far, we have not seen the benefit of recursion. But it's important to note
 that we can have recursion, and not have loops, but be able to accomplish all
@@ -130,7 +138,7 @@ much simpler.
 Fractals are self-similar patterns 
 which have similar structures at different scales.
 An example of a fractal is the Sierpinski triangle:
-<pre>
+{% highlight cpp %}
 *               
 **              
 * *             
@@ -147,7 +155,7 @@ An example of a fractal is the Sierpinski triangle:
 **  **  **  **  
 * * * * * * * * 
 ****************
-</pre>
+{% endhighlight %}
 
 To construct this triangle,
 start with the following:
