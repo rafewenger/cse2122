@@ -63,7 +63,7 @@ int factorial (int n)
 }
 {% endhighlight %}
 
-As another example, the n'th *harmonic number* is <kbd>&Sigma_{i=1}^n 1/i</kbd>.
+As another example, the n'th *harmonic number* is (1+1/2+1/3+...+1/n).
 The following function computes the n'th harmonic number
 in a **for** loop:
 {% highlight cpp %}
