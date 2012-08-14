@@ -33,7 +33,7 @@ Here is our definition, in C++, of the factorial function just defined:
 {% highlight cpp %}
 int factorial(int n)
 {
-    if(n == 0)
+    if (n <= 0)
     {
         return 1;
     }
@@ -122,6 +122,32 @@ void draw_tri(int n)
 }
 {% endhighlight %}
 
+Note that the function returns 0 if n is LESS THAN or equal to 0.
+While it would be silly to pass a negative number to this program,
+someone might accidentally do it.
+What will happen if you pass a negative integer 
+to the following recursive function:
+{% highlight cpp %}
+void bad_draw_tri(int n)
+{
+  if (n == 0)    // *** BETTER IS if (n <= 0)
+    { return; }
+
+  draw_tri(n-1);
+
+  for (int i = 0; i < n; i++) 
+    { cout << "*"; }
+  cout << endl;
+}
+{% endhighlight %}
+
+If you answered that the program would enter an infinite loop,
+you were not quite correct.
+The program would actually run out of memory on something 
+called the recursion stack and then would abort with some message
+like segmentation fault.
+See below for the discussion about the recursion stack.
+
 So far, we have not seen the benefit of recursion. But it's important to note
 that we can have recursion, and not have loops, but be able to accomplish all
 the same tasks. In fact, some programming languages ("functional languages"
@@ -163,7 +189,7 @@ start with the following 2x2 triangle:
 *
 **
 {% endhighlight %}
-Make three copies of this triangle, placing one on top
+Make three copies of the 2x2 triangle, placing one on top
 and two on the bottom to construct a 4x4 triangle:
 {% highlight cpp %}
 *               
@@ -209,7 +235,7 @@ and then drawing the matrix on the screen.
 The following function constructs a *length x length* Sierpinski triangle
 with lower left corner at (*row*, *col*) in the matrix.
 It constructs the triangle by recursively constructing 
-three *length/2 x length/2* triangles,
+three *(length/2)x(length/2)* triangles,
 one on top and two on the bottom.
 {% highlight cpp %}
 void setSierp(char m[MAX_LENGTH][MAX_LENGTH], int row, int col, int length)
@@ -225,6 +251,39 @@ void setSierp(char m[MAX_LENGTH][MAX_LENGTH], int row, int col, int length)
 }
 {% endhighlight %}
 
+
+## Sorting
+
+Insertion sort is an algorithm for sorting an array of n objects
+(numbers, names, etc.)
+The algorithm is:
+
+* If the array contains only one element, return.
+(There is nothing to sort.)
+* Otherwise, recursively sort the first (n-1) elements of the array.
+* Insert the last (n'th) element into its correct position,
+by swapping it with elements to its left.
+
+The function for insertion sort is:
+{% highlight cpp %}
+// Sort first n elements of array a[].
+void insertionSort(int a[], int n)
+{
+  int j;
+
+  if (n <= 1) { return; }
+
+  insertionSort(a, n-1);
+  // Elements a[0], a[1], ..., a[n-1] are now in sorted order.
+
+  // Insert a[n] in (a[0], a[1], ..., a[n-1]).
+  j = n-1;
+  while (j >= 1 && a[j-1] > a[j]) {
+    swap(a[j-1], a[j]);  // swap exchanges the two elements
+    j = j-1;
+  }
+}
+{% endhighlight %}
 
 ## Chess, Tic Tac Toe, Checkers, etc.
 
@@ -243,21 +302,6 @@ a win), so it should resign. A "search tree" was constructed and searched; for
 any "tree" in computer science, a recursive procedure is used to analyze it
 because each branch of a tree looks like a new tree. Self-similarity of
 different components of a problem domain is a prime reason recursion is used.
-
-## Sorting
-
-Another example of recursion is the Quicksort algorithm, which is used to sort
-lists of things (numbers, names, etc.). Quicksort basically works as follows:
-
-* Look at the current list: is there only one element? If so, it's already sorted (yay!).
-* Otherwise, if there is more than one element, choose some random element called a *pivot* and remove it, then collect all the stuff in the list that's less than the pivot (make a new list) and all the stuff that's greater than the pivot (make another new list).
-* Sort each of these smaller lists (using Quicksort; here is the recursion).
-* Once those smaller lists are sorted, put the original list back together again like so: less-than list (which is now sorted) + pivot + greater-than list (which is now sorted). Now you're done!
-
-It seems that the algorithm is almost too simple: where is the actual sorting
-taking place? It's deceptively simple, especially compared to algorithms that
-don't use recursion. Additionally, this algorithm is one of the fastest we know
-about, and is used almost universally for sorting lists.
 
 ## The stack
 
