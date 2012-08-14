@@ -158,11 +158,73 @@ An example of a fractal is the Sierpinski triangle:
 {% endhighlight %}
 
 To construct this triangle,
-start with the following:
+start with the following 2x2 triangle:
 {% highlight cpp %}
 *
 **
 {% endhighlight %}
+Make three copies of this triangle, placing one on top
+and two on the bottom to construct a 4x4 triangle:
+{% highlight cpp %}
+*               
+**              
+* *             
+****            
+{% endhighlight %}
+Make three copies of the 4x4 triangle, placing one on top
+and two on the bottom to construct an 8x8 triangle:
+{% highlight cpp %}
+*               
+**              
+* *             
+****            
+*   *           
+**  **          
+* * * *         
+********        
+{% endhighlight %}
+Repeating this one more time, gives the original 16x16 triangle:
+{% highlight cpp %}
+*               
+**              
+* *             
+****            
+*   *           
+**  **          
+* * * *         
+********        
+*       *       
+**      **      
+* *     * *     
+****    ****    
+*   *   *   *   
+**  **  **  **  
+* * * * * * * * 
+****************
+{% endhighlight %}
+Note that we could continue the process, add infinitum.
+
+We construct the Sierpinski triangle by storing it in a matrix
+and then drawing the matrix on the screen.
+The following function constructs a *length x length* Sierpinski triangle
+with lower left corner at (*row*, *col*) in the matrix.
+It constructs the triangle by recursively constructing 
+three *length/2 x length/2* triangles,
+one on top and two on the bottom.
+{% highlight cpp %}
+void setSierp(char m[MAX_LENGTH][MAX_LENGTH], int row, int col, int length)
+{
+  int half_length = length/2;
+
+  if (length == 1) { m[row][col] = '*'; }
+  if (length <= 1) { return; }
+
+  setSierp(m, row, col, half_length);
+  setSierp(m, row, col+half_length, half_length);
+  setSierp(m, row+half_length, col, half_length);
+}
+{% endhighlight %}
+
 
 ## Chess, Tic Tac Toe, Checkers, etc.
 
