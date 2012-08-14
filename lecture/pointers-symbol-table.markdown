@@ -464,42 +464,6 @@ cout << *px << endl; // crashes the program with a "segfault"
 ![xkcd comic](/cse2122/images/xkcd-compiler-complaint.png "xkcd comic")
 </a>
 
-## Background: Why pointers?
-
-<div style="text-align: center">
-<a id="viewerPlaceHolder" style="width:640px;height:480px;display:block;margin: 0 auto;"></a>
-</div>
-                
-<script type="text/javascript"> 
-        var fp = new FlexPaperViewer(   
-            '/cse2122/flash/FlexPaperViewer',
-            'viewerPlaceHolder', { config : {
-            SwfFile : escape('/cse2122/flash/pointers-background.swf'),
-            Scale : 0.6, 
-            ZoomTransition : 'easeOut',
-            ZoomTime : 0.5,
-            ZoomInterval : 0.2,
-            FitPageOnLoad : true,
-            FitWidthOnLoad : false,
-            FullScreenAsMaxWindow : false,
-            ProgressiveLoading : false,
-            MinZoomSize : 0.2,
-            MaxZoomSize : 5,
-            SearchMatchAll : false,
-            InitViewMode : 'Portrait',
-            PrintPaperAsBitmap : false,
-            ViewModeToolsVisible : false,
-            ZoomToolsVisible : false,
-            NavToolsVisible : true,
-            CursorToolsVisible : false,
-            SearchToolsVisible : false,
-            localeChain: 'en_US'
-            }});
-</script>
-
-[Download the PDF](/cse2122/pdf/pointers-background.pdf)
-
-
 ## Conclusion
 
 Any discussion of pointers is a bit esoteric without showcasing
