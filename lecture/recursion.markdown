@@ -54,23 +54,25 @@ implemented as follows:
 int factorial (int n)
 {
   int product = 1;
-  for (int i = 1; i <= n; i++) {
-    product = product*i;
+  for (int i = 1; i <= n; i++) 
+  {
+      product = product*i;
   }
 
   return(product);
 }
 {% endhighlight %}
 
-As another example, the n'th *harmonic number* is &Sigma_{i=1}^n 1/i.
+As another example, the n'th *harmonic number* is <kbd>&Sigma_{i=1}^n 1/i</kbd>.
 The following function computes the n'th harmonic number
 in a **for** loop:
 {% highlight cpp %}
 double harmonic (int n)
 {
   double sum = 0.0;
-  for (int i = 1; i <= n; i++) {
-    sum = (1.0/i) + sum;
+  for (int i = 1; i <= n; i++) 
+  {
+      sum = (1.0/i) + sum;
   }
 
   return(sum);
@@ -81,12 +83,14 @@ The recursive version of this function is:
 {% highlight cpp %}
 double harmonic (int n)
 {
-  if (n <= 1) { 
-    return(1); 
+  if (n <= 1) 
+  { 
+      return(1); 
   }
-  else {
-    double sum = (1.0/n) + harmonic(n-1);
-    return(sum);
+  else 
+  {
+      double sum = (1.0/n) + harmonic(n-1);
+      return(sum);
   }
 }
 {% endhighlight %}
