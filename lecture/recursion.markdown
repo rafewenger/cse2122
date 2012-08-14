@@ -48,35 +48,46 @@ Notice that the code matches perfectly with the mathematical definition. This
 is quite nice, since it's clean and simple (like math, usually).
 
 Anything that can be done with recursion can be done with regular loops, and
-vice versa. Consider the simple algorithm of adding two numbers that involves
-adding 1 each time:
-
+vice versa. For instance, the function factorial can be
+implemented as follows:
 {% highlight cpp %}
-int a = 10, b = 21;
-for(; b > 0; b--)
+int factorial (int n)
 {
-    a = a + 1;
+  int product = 1;
+  for (int i = 1; i <= n; i++) {
+    product = product*i;
+  }
+
+  return(product);
 }
 {% endhighlight %}
 
-That loop just adds one each time to `a`, and decreases 1 from `b` until `b` is
-0. The result is the value of `b` is added to `a`. Not the most efficient
-method of adding numbers, but it demonstrates an iterative method to perform
-addition.
-
-This same iterative method can be done recursively instead, using no loops:
-
+As another example, the n'th *harmonic number* is &Sigma_{i=1}^n 1/i.
+The following function computes the n'th harmonic number
+in a **for** loop:
 {% highlight cpp %}
-int add(int a, int b)
+double harmonic (int n)
 {
-    if(b == 0)
-    {
-        return a;
-    }
-    else
-    {
-        return (1 + add(a, b - 1));
-    }
+  double sum = 0.0;
+  for (int i = 1; i <= n; i++) {
+    sum = (1.0/i) + sum;
+  }
+
+  return(sum);
+}
+{% endhighlight %}
+
+The recursive version of this function is:
+{% highlight cpp %}
+double harmonic (int n)
+{
+  if (n <= 1) { 
+    return(1); 
+  }
+  else {
+    double sum = (1.0/n) + harmonic(n-1);
+    return(sum);
+  }
 }
 {% endhighlight %}
 
