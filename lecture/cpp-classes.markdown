@@ -19,6 +19,8 @@ public:
 or *data members* of class *Person*.
 Note that the class definition must be followed by a semicolon.
 
+## Class Circle
+
 A class can be composed of other classes:
 For instance,
 {% highlight cpp %}
@@ -99,4 +101,49 @@ Circle::contains(Point & q)
 {% endhighlight %}
 
 Program [circleContains2.cpp](../code/cpp-classes/circleContains-2)
-is an example of a program using them member function *Circle::contains*.
+is an example of a program using the member function *Circle::contains*.
+
+## Class LineSegment
+
+Another example of a class using *Point* and *compute_distance* is:
+{% highlight cpp %}
+class LineSegment
+{
+public:
+  Point endpoint1;
+  Point endpoint2;
+
+  double length();  // return the line segment length
+};
+
+double LineSegment::length()
+{
+  double L = compute_distance(endpoint1, endpoint2);
+  return(L);
+}
+{% endhighlight %}
+Again, the function *compute_distance* has no idea that the two points
+are attributes of the class *LineSegment*.
+
+Program [lineSegment.cpp](../code/cpp-classes/lineSegment)
+is an example of a program using the member function *LineSegment::length*.
+
+An alternative representation of the endpoints in LineSegment uses an array:
+{% highlight cpp %}
+class LineSegment
+{
+public:
+  Point endpoint[2];
+
+  double length();  // return the line segment length
+};
+
+double LineSegment::length()
+{
+  double L = compute_distance(endpoint[0], endpoint[1]);
+  return(L);
+}
+{% endhighlight %}
+
+Program [lineSegment2.cpp](../code/cpp-classes/lineSegment-2)
+is an example of a program using this alternative version of class *LineSegment*.
