@@ -148,6 +148,41 @@ called the recursion stack and then would abort with some message
 like segmentation fault.
 See below for the discussion about the recursion stack.
 
+## Insertion Sort
+
+Insertion sort is an algorithm for sorting an array of n objects
+(numbers, names, etc.)
+The algorithm is:
+
+* If the array contains only one element, return.
+(There is nothing to sort.)
+* Otherwise, recursively sort the first (n-1) elements of the array.
+* Insert the last (n'th) element into its correct position,
+by swapping it with elements to its left.
+
+The function for insertion sort is:
+{% highlight cpp %}
+// Sort first n elements of array a[].
+void insertionSort(int a[], int n)
+{
+  int j;
+
+  if (n <= 1) { return; }
+
+  insertionSort(a, n-1);
+  // Elements a[0], a[1], ..., a[n-1] are now in sorted order.
+
+  // Insert a[n] in (a[0], a[1], ..., a[n-1]).
+  j = n-1;
+  while (j >= 1 && a[j-1] > a[j]) {
+    swap(a[j-1], a[j]);  // swap exchanges the two elements
+    j = j-1;
+  }
+}
+{% endhighlight %}
+The recursive call in insertion sort can be replaced by a for loop
+to avoid the recursion.
+
 So far, we have not seen the benefit of recursion. But it's important to note
 that we can have recursion, and not have loops, but be able to accomplish all
 the same tasks. In fact, some programming languages ("functional languages"
@@ -251,39 +286,45 @@ void setSierp(char m[MAX_LENGTH][MAX_LENGTH], int row, int col, int length)
 }
 {% endhighlight %}
 
+## Quicksort
 
-## Sorting
-
-Insertion sort is an algorithm for sorting an array of n objects
-(numbers, names, etc.)
-The algorithm is:
+Quicksort is another sorting algorithm.
 
 * If the array contains only one element, return.
 (There is nothing to sort.)
-* Otherwise, recursively sort the first (n-1) elements of the array.
-* Insert the last (n'th) element into its correct position,
-by swapping it with elements to its left.
+* Otherwise, choose some random element x
+and reorder the array so that all elements with value less than x 
+precede x, and all elements with value greater than x come after x.
+* Recursively apply Quicksort to the elements with value less than x.
+* Recursively apply Quicksort to the elements with value greater than x.
 
-The function for insertion sort is:
+It seems that the algorithm is almost too simple: where is the actual sorting
+taking place? It's deceptively simple, especially compared to algorithms that
+don't use recursion. Additionally, this algorithm is one of the fastest we know
+about, and is used almost universally for sorting lists.
+
+An implementation of the Quicksort algorithm is:
 {% highlight cpp %}
-// Sort first n elements of array a[].
-void insertionSort(int a[], int n)
+void quicksort(int a[], int i0, int i1)
 {
-  int j;
+  int num = i1-i0+1;
+  if (num <= 1) { return; }
+  int p;                       // partition element;
+  int ploc;                    // location of p in a[]
 
-  if (n <= 1) { return; }
+  int r = rand()%num + i0;
+  p = a[r];
 
-  insertionSort(a, n-1);
-  // Elements a[0], a[1], ..., a[n-1] are now in sorted order.
-
-  // Insert a[n] in (a[0], a[1], ..., a[n-1]).
-  j = n-1;
-  while (j >= 1 && a[j-1] > a[j]) {
-    swap(a[j-1], a[j]);  // swap exchanges the two elements
-    j = j-1;
-  }
+  ploc = partition(a, i0, i1, p);
+  quicksort(a, i0, ploc-1);
+  quicksort(a, ploc+1, i1);
 }
 {% endhighlight %}
+Procedure *partition* reorders the *a[i0],a[i0+1],...,a[i1]* so that
+all elements with value less than $p$ precede $p$ and all elements
+with value greater than $p$ follow $p$.
+Procedure *partition* returns *ploc* which is the location
+of *p* in array *a*.
 
 ## Chess, Tic Tac Toe, Checkers, etc.
 
