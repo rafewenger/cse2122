@@ -98,13 +98,13 @@ double harmonic (int n)
 As another example of recursion,
 consider drawing a triangle with n rows and n columns,
 such as:
-<pre>
+{% highlight cpp %}
 *
 **
 ***
 ****
 *****
-</pre>
+{% endhighlight %}
 Draw this triangle by first drawing a triangle with n-1 rows and n-1 columns
 and then adding the last row.
 The following is a recursive function to draw
@@ -159,6 +159,10 @@ An example of a fractal is the Sierpinski triangle:
 
 To construct this triangle,
 start with the following:
+{% highlight cpp %}
+*
+**
+{% endhighlight %}
 
 ## Chess, Tic Tac Toe, Checkers, etc.
 
