@@ -89,10 +89,10 @@ If I catch you forgetting to close a file stream
 on your programming assignments,
 I will deduct points.
 
-Program [writeFile1.cpp](../code/writeFile1) is a complete example 
+Program [writeFile1.cpp](../code/fileIO/writeFile1) is a complete example 
 of a program which writes to a file.
 
-Program [writeMultiFile.cpp](../code/writeMultiFile) is an example
+Program [writeMultiFile.cpp](../code/fileIO/writeMultiFile) is an example
 of a program which writes to more than one file.
 
 We usually don't want to have the file name hard-wired into the program.
@@ -116,7 +116,7 @@ use the member function *file_name.c_str()*:
 fout.open(file_name.c_str(), ios::out);
 {% endhighlight %}
 
-Program [writeFile2.cpp](../code/writeFile2) is an example
+Program [writeFile2.cpp](../code/fileIO/writeFile2) is an example
 of a program which reads a file name.
 
 
@@ -179,7 +179,7 @@ To close the file stream:
 It is good programming practice to close
 a file stream when you are done using the file.
 
-Program [readFile1.cpp](../code/readFile1) is a complete example 
+Program [readFile1.cpp](../code/fileIO/readFile1) is a complete example 
 of a program which reads from a file.
 
 As with writing to a file, the program often prompts
@@ -191,7 +191,7 @@ for the function **open**:
 fin.open(file_name.c_str(), ios::in);       // open file file_name for input
 {% endhighlight %}
 
-Program [readFile2.cpp](../code/readFile2) is an example
+Program [readFile2.cpp](../code/fileIO/readFile2) is an example
 of a program which reads a file name.
 
 Often, one wants to read all the data in the file.
@@ -210,9 +210,9 @@ The *fin.fail()* function is true when the read fails.
 Once an input operation fails, all subsequent input operations will fail.
 The statement *while (fin)* is equivalent to *while(!fin.fail())*.
 
-Program [readFile3.cpp](../code/readFile3) is an example
+Program [readFile3.cpp](../code/fileIO/readFile3) is an example
 of a program which reads input until the read operation fails.
-Program [readFile4.cpp](../code/readFile4) is another example
+Program [readFile4.cpp](../code/fileIO/readFile4) is another example
 of a program which reads input until the read operation fails
 using *while (fin)* instead of *while(!fin.fail())*.
 
@@ -237,7 +237,7 @@ Note the use of **cerr** instead of **cout** for printing the error message.
 The command **exit(20)** exits the program on an error and returns
 the code integer 20.
 
-Program [readFile5.cpp](../code/readFile5) is an example
+Program [readFile5.cpp](../code/fileIO/readFile5) is an example
 of a program which checks for read errors.
 
 
