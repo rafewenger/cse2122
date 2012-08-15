@@ -5,7 +5,6 @@ layout: default
 
 A C++ class is a way of putting together data into a single object.
 For instance,
-
 {% highlight cpp %}
 class Person
 {
@@ -16,7 +15,6 @@ public:
     double weight; // in kg
 };
 {% endhighlight %}
-
 *name*, *age*, *height* and *weight* are called the *class attributes*
 or *data members* of class *Person*.
 Note that the class definition must be followed by a semicolon.
@@ -271,7 +269,7 @@ An example of accessing the endpoints is:
   cout << "Second endpoint: (" << q.x << "," << q.y << ")" << endl;
   cout << "Length: " << segA.length() << endl;
 {% endhighlight %}
-This is EXACTLY the same code as above.
+This code to read and output a line segment is EXACTLY the same code as above.
 There have been NO changes.
 When all the attributes of a class are private and only accessed
 through member functions,
