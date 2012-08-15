@@ -20,8 +20,8 @@ public:
 class LineSegment
 {
 public:
+  Point endpoint0;
   Point endpoint1;
-  Point endpoint2;
 
   double length();  // return the line segment length
 };
@@ -62,8 +62,8 @@ void read_point(const char * prompt, Point & p)
 void read_line_segment(const char * heading, LineSegment & seg)
 {
   cout << heading << endl;
-  read_point("Enter first endpoint (x,y): ", seg.endpoint1);
-  read_point("Enter second endpoint (x,y): ", seg.endpoint2);
+  read_point("Enter first endpoint (x,y): ", seg.endpoint0);
+  read_point("Enter second endpoint (x,y): ", seg.endpoint1);
 }
 
 double compute_distance(const Point & p1, const Point & p2)
@@ -77,7 +77,7 @@ double compute_distance(const Point & p1, const Point & p2)
 
 double LineSegment::length()
 {
-  double L = compute_distance(endpoint1, endpoint2);
+  double L = compute_distance(endpoint0, endpoint1);
   return(L);
 }
 {% endhighlight %}
