@@ -5,6 +5,7 @@ layout: default
 
 A C++ class is a way of putting together data into a single object.
 For instance,
+
 {% highlight cpp %}
 class Person
 {
@@ -15,6 +16,7 @@ public:
     double weight; // in kg
 };
 {% endhighlight %}
+
 *name*, *age*, *height* and *weight* are called the *class attributes*
 or *data members* of class *Person*.
 Note that the class definition must be followed by a semicolon.
@@ -249,7 +251,7 @@ double LineSegment::length()
   double L = compute_distance(endpoint[0], endpoint[1]);
   return(L);
 }
-{% endpoint %}
+{% endhighlight %}
 Note that the implementation 
 of *LineSegment::setEndpoint* and *LineSegment::getEndpoint*
 is simpler than in the previous version.
