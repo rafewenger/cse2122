@@ -15,8 +15,8 @@ public:
     double weight; // in kg
 };
 {% endhighlight %}
-*name*, *age*, *height* and *weight* are called the *class attributes*
-or *data members* of class *Person*.
+*name*, *age*, *height* and *weight* are called the *data members* 
+of class *Person*.
 Note that the class definition must be followed by a semicolon.
 
 ## Class Circle
@@ -38,7 +38,7 @@ public:
 };
 {% endhighlight %}
 
-We use a period to access the attributes of the class:
+We use a period to access the members of the class:
 {% highlight cpp %}
 Circle c;
 
@@ -123,7 +123,7 @@ double LineSegment::length()
 }
 {% endhighlight %}
 Again, the function *compute_distance* has no idea that the two points
-are attributes of the class *LineSegment*.
+are members of the class *LineSegment*.
 
 Program [lineSegment.cpp](../code/cpp-classes/lineSegment)
 is an example of a program using the member function *LineSegment::length*.
@@ -157,7 +157,7 @@ To set and read the endpoints one still needs this information.
 
 ## Information hiding
 
-We can hide the attributes of class *LineSegment* by making them private.
+We can hide the data members of class *LineSegment* by making them private.
 {% highlight cpp %}
 class LineSegment
 {
@@ -173,7 +173,7 @@ public:
 {% endhighlight %}
 
 We need to add functions *setEndpoint()* and *getEndpoint()*
-to access the attributes:
+to access the data members:
 {% highlight cpp %}
 void LineSegment::setEndpoint(int iend, Point & q)
 {
@@ -217,10 +217,10 @@ Program [examplePrivate.cpp](../code/cpp-classes/examplePrivate)
 is an example of a program using the new version of class *LineSegment*.
 
 In this version of class *LineSegment*,
-endpoints are stored in two attributes, *endpoint0* and *endpoint1*.
+endpoints are stored in two data members, *endpoint0* and *endpoint1*.
 However, it would actually be easier to use an array *endpoint[2]*
 to store the endpoints.
-Changing the attributes requires changing the code in the member functions 
+Changing the members requires changing the code in the member functions 
 *setEndpoint*, *getEndpoint* and *length*.
 {% highlight cpp %}
 class LineSegment
@@ -271,11 +271,11 @@ An example of accessing the endpoints is:
 {% endhighlight %}
 This code to read and output a line segment is EXACTLY the same code as above.
 There have been NO changes.
-When all the attributes of a class are private and only accessed
+When all the data members of a class are private and only accessed
 through member functions,
-only the member functions must be changed when the attributes change.
+only the member functions must be changed when the data members change.
 
-Hiding all the attributes of a class is extremely powerful.
+Hiding all the data members of a class is extremely powerful.
 It allows someone to modify a class without needing to check
 all the code that uses that class.
 As long as the member functions perform the same,
