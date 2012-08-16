@@ -33,8 +33,8 @@ the inheritance to work properly.
 
 Next, the `Rectangle` class. On the first line, we'll write `Rectangle
 : public Shape` to indicate that `Rectangle` inherits properties and
-methods from `Shape` (`public` again, to make the inheritance
-work). We'll also write a function header for the `area` method.
+member functions from `Shape` (`public` again, to make the inheritance
+work). We'll also write a function header for the `area` member function.
 
 {% highlight cpp %}
 class Rectangle : public Shape
@@ -76,7 +76,7 @@ code *outside* the class declaration (actually, in `.cpp` files,
 whereas the class declarations above are in `.h` files). If we just
 write `double area() { ... }` then the compiler won't know which `area`
 function we are defining (is it Rectangle's?  is it Triangle's?). So
-we use the `::` syntax to indicate which class method we are defining.
+we use the `::` syntax to indicate which class member function we are defining.
 
 {% highlight cpp %}
 double Rectangle::area()
@@ -167,7 +167,7 @@ Notice we name the parameters `_width`, `_height`, etc. with
 underscores in front in order to still be able to refer to the
 Rectangle class variables `width`, `height`, etc.
 
-Now, when the `Rectangle` class is used, say inside the `main` method,
+Now, when the `Rectangle` class is used, say inside the `main` member function,
 this particular constructor can be used to create a new instance:
 
 {% highlight cpp %}
@@ -192,7 +192,7 @@ exist at this point, cannot be printed. We would like to create a
 information about the rectangle.
 
 C++ makes that task too complicated for the moment, but we can achieve
-something close to that. Just define a `void` method called, perhaps,
+something close to that. Just define a `void` member function called, perhaps,
 `print()` and use `cout` to show the object information on the screen.
 
 {% highlight cpp %}
@@ -283,9 +283,9 @@ r.print();
 cout << endl;
 {% endhighlight %}
 
-## Methods that return new objects
+## Member gunctions that return new objects
 
-Let's make a method inside the `Rectangle` class that rotates the
+Let's make a member function inside the `Rectangle` class that rotates the
 rectangle 90 degrees (assume the `x` and `y` coordinates indicate the
 center of the rectangle, so rotating the rectangle around x,y will not
 change these values).
@@ -357,7 +357,7 @@ public:
     BankAccount(string _owner);
     BankAccount(string _owner, double _balance);
 
-    // ... other methods
+    // ... other member functions
 };
 
 // default constructor
@@ -416,9 +416,9 @@ MoneyMarketAccount::MoneyMarketAccount(string _owner, double _balance)
 In order to call the parent's constructor, we use the `:` followed by
 the parent's constructor function call (e.g. `BankAccount(_owner)`).
 
-## Public and private data and methods
+## Public and private data and member functions
 
-C++ allows a programmer to protect data and methods in a class from
+C++ allows a programmer to protect data and member functions in a class from
 being accessed by other code that's not part of the class. If we
 create a class but don't specify anything as `public:` then it's all
 private.
@@ -472,13 +472,13 @@ myaccount.getBalance() << endl;` Notice there is no function for
 changing the balance (except via `deposit` and `withdraw`, which are
 not shown here).
 
-A class may also have private methods. For example, maybe both the
-`deposit` and `withdraw` methods call a method named
+A class may also have private member functions. For example, maybe both the
+`deposit` and `withdraw` member functions call a member function named
 `notifyOwnerByEmail` that send deposit/withdraw receipts to the
-owner. This method should *only* be used after a deposit or withdraw,
+owner. This member function should *only* be used after a deposit or withdraw,
 so there is no reason for other code to call `notifyOwnerByEmail`
-directly. Thus, that method should be private, so that only code that
-is part of the `BankAccount` class can use the method.
+directly. Thus, that member function should be private, so that only code that
+is part of the `BankAccount` class can use the member function.
 
 If all constructors are marked as private, then no instances of the
 object can be created. This is a rarely-used but sometimes necessary
@@ -487,8 +487,8 @@ feature.
 > **class** *n. & adj.*
 > [Origin: Latin *classis* via *calare*, "to call to arms."] **1**
 > *n.* (Object-orienteering) Data members encapsulated with a set of
-> methods dying to get at them. **2** *n.* (Marxism) A subset of
-> society encapsulated with a set of methods for exploiting and
+> member functions dying to get at them. **2** *n.* (Marxism) A subset of
+> society encapsulated with a set of member functions for exploiting and
 > exterminating both itself and other subsets of society. **3** *n.*
 > (Style) Someth'n' you jest plain got or don't. **4** *adj.* (Of a
 > struggle) iterative, as in the attempted modularization of
