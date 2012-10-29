@@ -84,5 +84,51 @@ class LinkedList
 ...
 {% endhighlight %}
 
+We have defined Point with coordinates of type double,
+but maybe we also want points with coordinates of type int or float.
+Define Point as a template to give this flexibility:
+
+{% highlight cpp %}
+template <typename COORD_TYPE>
+class Point 
+{
+  COORD_TYPE x;
+  COORD_TYPE y;  
+}
+...
+
+  Point<double> p;      // Point whose coordinates have type double
+  Point<int> q;         // Point whose coordinates have type int
+  Point<float> r;       // Point whose coorindates have type r
+{% endhighlight %}
+
+We can use the template class Point to define different types
+of linked lists of points:
+{% highlight cpp %}
+template <typename COORD_TYPE>
+class Point 
+{
+  COORD_TYPE x;
+  COORD_TYPE y;  
+}
+...
+// Linked list of points whose coordinates have type double
+  LinkedList<Point<double> >;    // Note space between '>' and '>'
+
+// Linked list of points whose coordinates have type int
+  LinkedList<Point<int> >;  
+
+// Linked list of points whose coordinates have type float
+  LinkedList<Point<int> >;  
+{% endhighlight %}
+
+Note that there MUST be a space between '>' and '>'.  
+A common error is to forget this space.
+Unfortunately, the symbol '>>' has a separate meaning in C++.
+If you forget the space, the compiler will interpret '>>' 
+as the right shift operator
+and generate a whole bunch of (unintelligible) error messages.
+
+
 
 
