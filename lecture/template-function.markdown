@@ -149,7 +149,8 @@ The compiler error is:
 {% highlight cpp %}
 > g++ inner_product_error1.cpp
 inner_product_error1.cpp: In function 'int main()':
-inner_product_error1.cpp:25: error: no matching function for call to 'inner_product(float [5], int [5], const int&, float&)'
+inner_product_error1.cpp:25: error: no matching function for call to 
+        'inner_product(float [5], int [5], const int&, float&)'
 {% endhighlight %}
 
 The problem is that the template specification requires both u and v

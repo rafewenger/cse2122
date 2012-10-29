@@ -326,13 +326,19 @@ Compiling the function gives the following error message:
 {% highlight cpp %}
 > g++ circle3_error.cpp
 circle3_error.cpp: In function 'int main()':
-circle3_error.cpp:24: error: type/value mismatch at argument 1 in template parameter list for 'template<class POINT_TYPE, class RADIUS_TYPE> class Circle'
+circle3_error.cpp:24: error: type/value mismatch at argument 1 
+     in template parameter list for 
+     'template<class POINT_TYPE, class RADIUS_TYPE> class Circle'
 circle3_error.cpp:24: error:   expected a type, got 'Point'
 circle3_error.cpp:24: error: invalid type in declaration before ';' token
-circle3_error.cpp:26: error: request for member 'p' in 'c1', which is of non-class type 'int'
-circle3_error.cpp:27: error: request for member 'p' in 'c1', which is of non-class type 'int'
-circle3_error.cpp:28: error: request for member 'radius' in 'c1', which is of non-class type 'int'
-circle3_error.cpp:30: error: request for member 'radius' in 'c1', which is of non-class type 'int'
+circle3_error.cpp:26: error: request for member 'p' in 'c1', 
+     which is of non-class type 'int'
+circle3_error.cpp:27: error: request for member 'p' in 'c1', 
+     which is of non-class type 'int'
+circle3_error.cpp:28: error: request for member 'radius' in 'c1', 
+     which is of non-class type 'int'
+circle3_error.cpp:30: error: request for member 'radius' in 'c1', 
+     which is of non-class type 'int'
 {% endhighlight %}
 
 Can you determine the error after reading the error message?
