@@ -81,6 +81,101 @@ using namespace std;    // Function template swap is in the std namespace.
 ...
 {% endhighlight %}
 
+## Example of computing the inner product
+
+Assume you want to compute the inner product of two arrays.
+The following code computes the inner product of arrays of type double:
+{% highlight cpp %}
+void inner_product(const double u[], const double v[], 
+                   const int n, double & result)
+{
+  result = 0;
+  for (int i = 0; i < n; i++)
+    { result = result + u[i]*v[i]; }
+}
+{% endhighlight %}
+
+If you want a function to compute the inner product of two arrays
+of type int, you need to create a copy of the function
+with arguments of type int.
+You need another copy for the inner product of arrays of type float
+and of type short and of type long, etc.
+Fortran libraries contain multiple copies of functions such as inner_product
+with slightly different names 
+(operation overloading is not supported in Fortran)
+and different parameter types.
+
+In C++ you can create one template function which computes
+the inner product for all such types:
+{% highlight cpp %}
+template <typename T>
+void inner_product(const T u[], const T v[], const int n, T & result)
+{
+  result = 0;
+  for (int i = 0; i < n; i++)
+    { result = result + u[i]*v[i]; }
+}
+...
+  double x[LENGTH], y[LENGTH], prod_x_y;
+  float u[LENGTH], v[LENGTH], prod_u_v;
+  int a[LENGTH], b[LENGTH], prod_a_b;
+...
+  inner_product(x, y, LENGTH, prod_x_y);
+  inner_product(u, v, LENGTH, prod_u_v);
+  inner_product(x, y, LENGTH, prod_a_b);
+...
+{% endhighlight %}
+
+However, the function above cannot be used to compute
+the inner product of two arrays of different types.
+For instance, the following example generates a compiler error:
+{% highlight cpp %}
+ 6. template <typename T>
+ 7. void inner_product(const T u[], const T v[], const int n, T & result)
+ 8. {
+ 9.   result = 0;
+10.  for (int i = 0; i < n; i++)
+11.    { result = result + u[i]*v[i]; }
+12. }
+...
+17.   float x[LENGTH], result;
+18.   int a[LENGTH];
+...
+25.   inner_product(x, a, LENGTH, result);
+...
+{% endhighlight %}
+
+The compiler error is:
+{% highlight cpp %}
+> g++ inner_product_error1.cpp
+inner_product_error1.cpp: In function 'int main()':
+inner_product_error1.cpp:25: error: no matching function for call to 'inner_product(float [5], int [5], const int&, float&)'
+{% endhighlight %}
+
+The problem is that the template specification requires both u and v
+to be arrays of the same type and for result to have the same type as well.
+We can modify template to compute the inner product of two arrays with
+different types as follows:
+{% highlight cpp %}
+template <typename T1, typename T2, typename T3>
+void inner_product(const T1 u[], const T2 v[], const int n, T3 & result)
+{
+  result = 0;
+  for (int i = 0; i < n; i++) {
+    result = result + u[i]*v[i]; 
+  }
+}
+...
+   float x[LENGTH];
+   int a[LENGTH];
+   double result;
+...
+   inner_product(x, a, LENGTH, result);
+{% endhighlight %}
+Note that the result also may have a different type.
+This creates the potential for numerical error if result has type int
+while the arrays have type float or double.
+
 ## Examples of function templates
 
 Function templates can be used to perform the same operation
