@@ -57,7 +57,7 @@ class Point
 Note that the member functions receive and return variables
 of type Point:
 {% highlight cpp %}
-template <typename T> // T can be anything, e.g. foo
+template <typename T>
 class LinkedList
 {
     ...
