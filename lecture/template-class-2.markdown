@@ -24,6 +24,8 @@ class LinkedList
     LinkedList();
     void insert_front(T value); // T!
     ...
+    T nth(int n); // T!
+    ...
 };
 ...
 {% endhighlight %}
@@ -49,5 +51,38 @@ class Point
 };
 ...
 
-  LinkedList<Point> list_point;    // Linked list of points
+  LinkedList<Point> point_list;    // Linked list of points
 {% endhighlight %}
+
+Note that the member functions receive and return variables
+of type Point:
+{% highlight cpp %}
+template <typename T> // T can be anything, e.g. foo
+class LinkedList
+{
+    ...
+    public:
+    ...
+    void insert_front(T value); // T!
+    ...
+    T nth(int n); // T!
+    ...
+};
+...
+
+  LinkedList<Point> point_list;
+  Point p, q;
+
+  for (int i = 0; i < 10; i++)
+  {
+    p.x = i;
+    p.y = i*i;
+    point_list.insert_front(p);
+  }
+
+  q = point_list.nth(2);
+...
+{% endhighlight %}
+
+
+
