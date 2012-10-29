@@ -261,3 +261,79 @@ must remember to have x and y fields in the class.
 The flexibility of CircleB also creates the potential for more
 things to go wrong.
 
+Template classes can have more than two parameters.
+For instance, in computer graphics the representation
+of a circle may include an r,g,b color and an opacity.
+{% highlight cpp %}
+template <typename COORD_TYPE, typename RADIUS_TYPE,
+          typename COLOR_TYPE, typename OPACITY_TYPE>
+class Circle
+{
+  public:
+    COORD_TYPE x;
+    COORD_TYPE y;
+    RADIUS_TYPE radius;
+    COLOR_TYPE r,g,b;
+    OPACITY_TYPE opacity;
+};
+...
+
+  Circle<int, double, unsigned char, float> c;
+...
+{% endhighlight %}
+
+## Templates and compiler errors
+
+With all but the simplest templates, compiler errors can be extremely confusing.
+Unless you are extremely good at template programming,
+it is often better to first code a class without using templates
+and then convert to a template class.
+
+The following code generates a fairly simple compiler error:
+{% highlight cpp %}
+...
+ 6. template <typename COORD_TYPE>
+ 7. class Point
+ 8. {
+ 9. public:
+10.  COORD_TYPE x;
+11.  COORD_TYPE y;
+12. };
+13.
+14. template <typename POINT_TYPE, typename RADIUS_TYPE>
+15. class Circle
+16. {
+17. public:
+18.   POINT_TYPE p;
+19.   RADIUS_TYPE radius;
+20. };
+21. 
+22. int main()
+23. {
+24.   Circle<Point,double> c1;
+25.   c1.p.x = 3;
+26.   c1.p.y = 4;
+27.   c1.radius = 2.3;
+28. 
+29.   cout << "Radius: " << c1.radius << endl;
+30.
+31.   return 0;
+32. }
+{% endhighlight %}
+
+Can you spot the error?
+Compiling the function gives the following error message:
+{% highlight cpp %}
+> g++ circle3_error.cpp
+circle3_error.cpp: In function 'int main()':
+circle3_error.cpp:24: error: type/value mismatch at argument 1 in template parameter list for 'template<class POINT_TYPE, class RADIUS_TYPE> class Circle'
+circle3_error.cpp:24: error:   expected a type, got 'Point'
+circle3_error.cpp:24: error: invalid type in declaration before ';' token
+circle3_error.cpp:26: error: request for member 'p' in 'c1', which is of non-class type 'int'
+circle3_error.cpp:27: error: request for member 'p' in 'c1', which is of non-class type 'int'
+circle3_error.cpp:28: error: request for member 'radius' in 'c1', which is of non-class type 'int'
+circle3_error.cpp:30: error: request for member 'radius' in 'c1', which is of non-class type 'int'
+{% endhighlight %}
+
+Can you determine the error after reading the error message?
+
