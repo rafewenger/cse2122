@@ -81,3 +81,73 @@ using namespace std;    // Function template swap is in the std namespace.
 ...
 {% endhighlight %}
 
+## Examples of function templates
+
+Function templates can be used to perform the same operation
+on different objects.
+For instance, the following function template prints
+the x and y coordinates of the object in the argument:
+{% highlight cpp %}
+template <typename T>
+void print_coord(const T & object)
+{
+  cout << "x: " << object.x << endl;
+  cout << "y: " << object.y << endl;
+}
+{% endhighlight %}
+
+We can apply print_coord to any class which has members x and y:
+{% highlight cpp %}
+...
+class Label
+{
+public:
+  float x;
+  float y;
+  string name;
+};
+
+class Circle
+{
+public:
+  int x;
+  int y;
+  int radius;
+};
+
+int main()
+{
+  Label l;
+  Circle c;
+
+  c.x = l.x = 3;
+  c.y = l.y = 4;
+  c.radius = 10;
+  l.name = "Columbus";
+
+  print_coord(c);
+  print_coord(l);
+...
+{% endhighlight %}
+Note that classes Label and Circle have different types for x and y
+and have additional members other than x and y.
+All that is necessary is that the class have a member x and a member y.
+The type of x could even be different from the type of y:
+{% highlight cpp %}
+...
+class Point {
+  public:
+    int x;
+    double y;
+};
+...
+
+  Point p;
+  p.x = 5;
+  p.y = 6.6;
+  print_coord(p);
+...
+{% endhighlight %}
+Note that cout is a C++ template which is why 
+it works on objects of different types.
+
