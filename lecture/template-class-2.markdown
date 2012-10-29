@@ -129,6 +129,99 @@ If you forget the space, the compiler will interpret '>>'
 as the right shift operator
 and generate a whole bunch of (unintelligible) error messages.
 
+## Two or more template parameters
+
+A template can have two or more type parameters.
+For instance, a circle is defined by the x and y coordinates
+of its center and its radius:
+{% highlight cpp %}
+class Circle
+{
+  public:
+    double x;
+    double y;
+    double radius;
+};
+{% endhighlight %}
+
+We may also want a circle whose x and y coordinates are integers
+and its radius is type double.
+Or perhaps we also want the x and y coordinates to have type double
+and the radius to be an integer.
+We can define a template class with separate types 
+for the coordinates and the radius.
+{% highlight cpp %}
+template <typename COORD_TYPE, typename RADIUS_TYPE>
+class Circle
+{
+  public:
+    COORD_TYPE x;
+    COORD_TYPE y;
+    RADIUS_TYPE radius;
+};
+...
+
+  Circle<double, double> c1;  // Coordinates type double, radius type double.
+  Circle<int, double> c2;     // Coordinates type int, radius type double.
+  Circle<double, int> c3;     // Coordinates type double, radius type int.
+{% endhighlight %}
+
+When we create the circle, the k'th type in the template parameter list
+is set to be the k'th type in the template argument list.
+
+We can create a linked list of circles as follows:
+{% highlight cpp %}
+template <typename COORD_TYPE, typename RADIUS_TYPE>
+class Circle
+{
+  public:
+    COORD_TYPE x;
+    COORD_TYPE y;
+    RADIUS_TYPE radius;
+};
+...
+
+  // Linked list of circles: coordinates type int, radius type double.
+  LinkedList<Circle<int, double> >
+
+  // Linked list of circles: coordinates type double, radius type int.
+  LinkedList<Circle<double, int> >
+{% endhighlight %}
+
+We can also use the Point class in defining the coordinates 
+of the center of the circle:
+{% highlight cpp %}
+template <typename T>
+class Point 
+{
+  T x;
+  T y;  
+};
+
+template <typename COORD_TYPE, typename RADIUS_TYPE>
+class Circle
+{
+  public:
+    Point<COORD_TYPE> p;  // Coordinates are p.x and p.y
+    RADIUS_TYPE radius;
+};
+...
+
+  // Circle with coordinates of type int, radius of type double
+  Circle<Point<int>, double> c;
+
+  c.p.x = 3;          // Set x-coordinate
+  c.p.y = 4;          // Set y-coordinate
+  c.radius = 5.5;     // Set radius
+
+  // Linked list of circles: coordinates type int, radius type double.
+  LinkedList<Circle<Point<int>, double> >
+
+  // Linked list of circles: coordinates type double, radius type int.
+  LinkedList<Circle<Point<double>, int> >
+{% endhighlight %}
+
+
 
 
 
