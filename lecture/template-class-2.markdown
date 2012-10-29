@@ -208,6 +208,38 @@ class Circle
 ...
 
   // Circle with coordinates of type int, radius of type double
+  Circle<int, double> c;
+
+  c.p.x = 3;          // Set x-coordinate
+  c.p.y = 4;          // Set y-coordinate
+  c.radius = 5.5;     // Set radius
+
+  // Linked list of circles: coordinates type int, radius type double.
+  LinkedList<Circle<int, double> >
+
+  // Linked list of circles: coordinates type double, radius type int.
+  LinkedList<Circle<double, int> >
+{% endhighlight %}
+
+A different way to use the class Point is as follows:
+{% highlight cpp %}
+template <typename T>
+class Point 
+{
+  T x;
+  T y;  
+};
+
+template <typename POINT_TYPE, typename RADIUS_TYPE>
+class Circle
+{
+  public:
+    POINT_TYPE p;
+    RADIUS_TYPE radius;
+};
+...
+
+  // Circle with coordinates of type int, radius of type double
   Circle<Point<int>, double> c;
 
   c.p.x = 3;          // Set x-coordinate
@@ -220,8 +252,3 @@ class Circle
   // Linked list of circles: coordinates type double, radius type int.
   LinkedList<Circle<Point<double>, int> >
 {% endhighlight %}
-
-
-
-
-
