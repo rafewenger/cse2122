@@ -199,7 +199,7 @@ class Point
 };
 
 template <typename COORD_TYPE, typename RADIUS_TYPE>
-class Circle
+class CircleA
 {
   public:
     Point<COORD_TYPE> p;  // Coordinates are p.x and p.y
@@ -208,17 +208,17 @@ class Circle
 ...
 
   // Circle with coordinates of type int, radius of type double
-  Circle<int, double> c;
+  CircleA<int, double> c;
 
   c.p.x = 3;          // Set x-coordinate
   c.p.y = 4;          // Set y-coordinate
   c.radius = 5.5;     // Set radius
 
   // Linked list of circles: coordinates type int, radius type double.
-  LinkedList<Circle<int, double> >
+  LinkedList<CircleA<int, double> >
 
   // Linked list of circles: coordinates type double, radius type int.
-  LinkedList<Circle<double, int> >
+  LinkedList<CircleA<double, int> >
 {% endhighlight %}
 
 A different way to use the class Point is as follows:
@@ -231,7 +231,7 @@ class Point
 };
 
 template <typename POINT_TYPE, typename RADIUS_TYPE>
-class Circle
+class CircleB
 {
   public:
     POINT_TYPE p;
@@ -239,16 +239,25 @@ class Circle
 };
 ...
 
-  // Circle with coordinates of type int, radius of type double
-  Circle<Point<int>, double> c;
+  // CircleB with coordinates of type int, radius of type double
+  CircleB<Point<int>, double> c;
 
   c.p.x = 3;          // Set x-coordinate
   c.p.y = 4;          // Set y-coordinate
   c.radius = 5.5;     // Set radius
 
   // Linked list of circles: coordinates type int, radius type double.
-  LinkedList<Circle<Point<int>, double> >
+  LinkedList<CircleB<Point<int>, double> >
 
   // Linked list of circles: coordinates type double, radius type int.
-  LinkedList<Circle<Point<double>, int> >
+  LinkedList<CircleB<Point<double>, int> >
 {% endhighlight %}
+
+Template class CircleB gives more flexibility than template class CircleA.
+For instance, CircleB could have different types for coordinates x and y
+or could have other data stored with the point.
+On the other hand, anyone writing a new class to be used as a POINT_TYPE 
+must remember to have x and y fields in the class.
+The flexibility of CircleB also creates the potential for more
+things to go wrong.
+
