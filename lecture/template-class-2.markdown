@@ -113,13 +113,13 @@ class Point
 }
 ...
 // Linked list of points whose coordinates have type double
-  LinkedList<Point<double> >;    // Note space between '>' and '>'
+  LinkedList<Point<double> > plist1;    // Note space between '>' and '>'
 
 // Linked list of points whose coordinates have type int
-  LinkedList<Point<int> >;  
+  LinkedList<Point<int> > plist2;  
 
 // Linked list of points whose coordinates have type float
-  LinkedList<Point<int> >;  
+  LinkedList<Point<int> > plist3;  
 {% endhighlight %}
 
 Note that there MUST be a space between '>' and '>'.  
@@ -182,10 +182,10 @@ class Circle
 ...
 
   // Linked list of circles: coordinates type int, radius type double.
-  LinkedList<Circle<int, double> >
+  LinkedList<Circle<int, double> > circle_list1;
 
   // Linked list of circles: coordinates type double, radius type int.
-  LinkedList<Circle<double, int> >
+  LinkedList<Circle<double, int> > circle_list2;
 {% endhighlight %}
 
 We can also use the Point class in defining the coordinates 
@@ -215,10 +215,10 @@ class CircleA
   c.radius = 5.5;     // Set radius
 
   // Linked list of circles: coordinates type int, radius type double.
-  LinkedList<CircleA<int, double> >
+  LinkedList<CircleA<int, double> > circle_list1;
 
   // Linked list of circles: coordinates type double, radius type int.
-  LinkedList<CircleA<double, int> >
+  LinkedList<CircleA<double, int> > circle_list2;
 {% endhighlight %}
 
 A different way to use the class Point is as follows:
@@ -247,10 +247,10 @@ class CircleB
   c.radius = 5.5;     // Set radius
 
   // Linked list of circles: coordinates type int, radius type double.
-  LinkedList<CircleB<Point<int>, double> >
+  LinkedList<CircleB<Point<int>, double> > circle_list1;
 
   // Linked list of circles: coordinates type double, radius type int.
-  LinkedList<CircleB<Point<double>, int> >
+  LinkedList<CircleB<Point<double>, int> > circle_list2;
 {% endhighlight %}
 
 Template class CircleB gives more flexibility than template class CircleA.
