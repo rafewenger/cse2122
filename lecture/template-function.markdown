@@ -259,17 +259,17 @@ Note that dx and dy have the same types T1.
 This can cause a compiler error if dx is an integer and dy is a float
 of vice versa.
 {% highlight cpp %}
-39.  translate(1, 0.2, c);
-40.  translate(0.1, 0, l);
+37.  translate(1, 0.2, c);
+48.  translate(0.1, 0, l);
 {% endhighlight %}
 
 Compiling the above code generates the following compiler errors:
 {% highlight cpp %}
 >  g++ translate_error1.cpp
 translate_error1.cpp: In function 'int main()':
-translate_error1.cpp:39: error: no matching function 
+translate_error1.cpp:37: error: no matching function 
     for call to 'translate(int, double, Circle&)'
-translate_error1.cpp:40: error: no matching function 
+translate_error1.cpp:38: error: no matching function 
     for call to 'translate(double, int, Label&)'
 {% endhighlight %}
 
@@ -336,5 +336,17 @@ This specialization overides the generic translate
 where object has the template type T3.
 The compiler chooses this specialized template whenever object
 has the type LineSegment.
- 
 
+The following code sets the line segment to ((0,10),(5,15))
+and then translate the line segment by (0.1,0.2) to the line segment
+((0.1,10.2),(5.1,15.2)).
+{% highlight cpp %}
+  LineSegment seg;
+
+  seg.x1 = 0;
+  seg.y1 = 10;
+  seg.x2 = 5;
+  seg.y2 = 15;
+
+  translate(0.1, 0.2, seg);
+{% endhighlight %}
