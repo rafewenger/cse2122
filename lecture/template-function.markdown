@@ -182,7 +182,7 @@ while the arrays have type float or double.
 Function templates can be used to perform the same operation
 on different objects.
 For instance, the following function template
-adds (dx,dy) to an objects x and y locations.
+adds (dx,dy) to an object's x and y locations.
 {% highlight cpp %}
 template <typename T1, typename T2>
 void translate(const T1 dx, const T1 dy,
