@@ -238,43 +238,15 @@ Note that classes Circle, Rectangle and Label have different types for x and y
 and have additional members other than x and y.
 All that is necessary is that the class have a member x and a member y.
 
-To ensure that the classes have the correct members,
-it is preferable to create a class Point with members x and y,
-and then derive the other classes from that class.
-{% highlight cpp %}
-...
-template <typename T>
-class Point
-{
-public:
-  T x;
-  T y;
-};
-
-class Circle:public Point<double>
-{
-public:
-  int radius;
-};
-
-class Rectangle:public Point<int> 
-{
-public:
-  int width;
-  int height;
-};
-
-class Label:public Point<float>
-{
-public:
-  string name;
-};
-...
-  translate(0.1, 0.2, c);
-  translate(0.1, 0.2, l);
-  translate(1, 2, r);
-...
-{% endhighlight %}
+For the simple example above,
+a better solution would be to create a class Point with members x and y
+and a member function translate.
+Derive classes Circle, Rectangle and Label from class Point.
+However, for more complicated examples where the different functions
+on different elements of each class,
+using derived classes can get very complicated 
+and require multiple inheritance.
+Using template functions may then be the simplest solution.
 
 Consider again procedure translate:
 {% highlight cpp %}
@@ -291,17 +263,17 @@ Note that dx and dy have the same types T1.
 This can cause a compiler error if dx is an integer and dy is a float
 of vice versa.
 {% highlight cpp %}
-44.  translate(1, 0.2, c);
-45.  translate(0.1, 0, l);
+39.  translate(1, 0.2, c);
+40.  translate(0.1, 0, l);
 {% endhighlight %}
 
 Compiling the above code generates the following compiler errors:
 {% highlight cpp %}
 >  g++ translate_error1.cpp
 translate_error1.cpp: In function 'int main()':
-translate_error1.cpp:44: error: no matching function 
+translate_error1.cpp:39: error: no matching function 
     for call to 'translate(int, double, Circle&)'
-translate_error1.cpp:45: error: no matching function 
+translate_error1.cpp:40: error: no matching function 
     for call to 'translate(double, int, Label&)'
 {% endhighlight %}
 
