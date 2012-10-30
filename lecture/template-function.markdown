@@ -199,25 +199,21 @@ We can apply translate to any class which has members x and y:
 class Circle
 {
 public:
-  double x;
-  double y;
+  double x, y;
   int radius;
 };
 
 class Rectangle 
 {
 public:
-  int x;
-  int y;
-  int width;
-  int height;
+  int x, y;
+  int width, height;
 };
 
 class Label
 {
 public:
-  float x;
-  float y;
+  float x, y;
   string name;
 };
 
@@ -302,4 +298,43 @@ void translate(const T1 dx, const T2 dy,
 ...
 {% endhighlight %}
 
+
+## Template specialization
+
+Consider the following LineSegment class for storing a line segment:
+{% highlight cpp %}
+class LineSegment
+{
+public:
+  float x1, y1;  // Coordinates of endpoint 1
+  float x2, y2;  // Coordinates of endpoint 2
+};
+{% endhighlight %}
+
+The endpoints of the line segment are (x1,y1) and (x2,y2).
+We would like the template translate to apply to LineSegment.
+However, LineSegment has two endpoints, not one,
+and both endpoints must be modified.
+
+We define a "specialization" of template translate 
+which applies to LineSegment:
+{% highlight cpp %}
+template <typename T1, typename T2>
+void translate(const T1 dx, const T2 dy,
+               LineSegment & object)
+{
+  object.x1 += dx;
+  object.y1 += dy;
+  object.x2 += dx;
+  object.y2 += dy;
+}
+{% endhighlight %}
+
+Note that this specialization has only two template types
+and that object has the type LineSegment.
+This specialization overides the generic translate
+where object has the template type T3.
+The compiler chooses this specialized template whenever object
+has the type LineSegment.
+ 
 
