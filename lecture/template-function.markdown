@@ -299,8 +299,10 @@ Compiling the above code generates the following compiler errors:
 {% highlight cpp %}
 >  g++ translate_error1.cpp
 translate_error1.cpp: In function 'int main()':
-translate_error1.cpp:44: error: no matching function for call to 'translate(int, double, Circle&)'
-translate_error1.cpp:45: error: no matching function for call to 'translate(double, int, Label&)'
+translate_error1.cpp:44: error: no matching function 
+    for call to 'translate(int, double, Circle&)'
+translate_error1.cpp:45: error: no matching function 
+    for call to 'translate(double, int, Label&)'
 {% endhighlight %}
 
 One solution is to use only floats.
