@@ -350,3 +350,92 @@ and then translate the line segment by (0.1,0.2) to the line segment
 
   translate(0.1, 0.2, seg);
 {% endhighlight %}
+
+## Template function errors
+
+One common error in writing template functions is 
+to have a template parameter type which does not appear
+in the function argument list.
+For instance, in the following example 
+there are three template parameter types, T1, T2, T3,
+but only T1 and T3 are referenced in the function header.
+{% highlight cpp %}
+ 7. // ERROR: Template parameter type T2 is not in function parameter list.
+ 8. template <typename T1, typename T2, typename T3>
+ 9. void translate(const T1 dx, const T1 dy,
+10.                T3 & object)
+11. {
+12.   object.x += dx;
+13.   object.y += dy;
+14. }
+...
+32.   Circle c;
+33.   Label l;
+...
+38.  translate(1, 2, c);
+39.  translate(3, 4, l);
+...
+{% endhighlight %}
+
+This definition of the template function is not illegal.
+(There are ways of calling this function by explicitly specifying
+T1, T2 and T3.)
+However, in the call to translate in lines 38 and 39,
+the compiler does not know the type of T2 and
+generates the following error message:
+{% highlight cpp %}
+> g++ translate_error2.cpp
+translate_error2.cpp: In function 'int main()':
+translate_error2.cpp:38 error: no matching function 
+    for call to 'translate(int, int, Circle&)'
+translate_error2.cpp:39 error: no matching function 
+    for call to 'translate(int, int, Label&)'
+{% endhighlight %}
+Note that the error is in the function header in lines 7 and 8,
+but the error message refers to lines 38 and 39.
+
+The following code contains a similar error in the specialization
+of translate for the object LineSegment.
+{% highlight cpp %}
+...
+28. template <typename T1, typename T2, typename T3>
+29. void translate(const T1 dx, const T2 dy,
+30.                T3 & object)
+31. {
+32.   object.x += dx;
+33.   object.y += dy;
+34. }
+35. 
+36. // ERROR: Template parameter type T3 is not in function parameter list.
+37. template <typename T1, typename T2, typename T3>
+38. void translate(const T1 dx, const T2 dy,
+39.                LineSegment & object)
+40. {
+41.   object.x1 += dx;
+42.   object.y1 += dy;
+43.   object.x2 += dx;
+44.   object.y2 += dy;
+45. }
+...
+52.   LineSegment seg;
+...
+64.   translate(1, 2, seg);
+{% endhighlight %}
+In the call to translate in line 64,
+the call to translate does not match the specificatin in lines 37-39
+because type T3 is not defined.
+The compiler matches the call to translate in line 64
+with the template definition in lines 28-34.
+However, type LineSegment does not have members x and y
+and the compiler generates the following error messages:
+{% highlight cpp %}
+g++ translate_error3.cpp
+translate_error3.cpp: In function 'void translate(T1, T2, T3&) 
+    [with T1 = int, T2 = int, T3 = LineSegment]':
+translate_error3.cpp:64:   instantiated from here
+translate_error3.cpp:32: error: 'class LineSegment' has no member named 'x'
+translate_error3.cpp:33: error: 'class LineSegment' has no member named 'y'
+{% endhighlight %}
+Note that the programming error was in line 37 
+but the error messages refer to lines 64, 32 and 33.
+Detecting such errors can be extremely difficult.
