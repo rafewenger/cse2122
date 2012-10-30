@@ -204,7 +204,8 @@ public:
   int radius;
 };
 
-class Rectangle {
+class Rectangle 
+{
 public:
   int x;
   int y;
@@ -237,6 +238,44 @@ Note that classes Circle, Rectangle and Label have different types for x and y
 and have additional members other than x and y.
 All that is necessary is that the class have a member x and a member y.
 
+To ensure that the classes have the correct members,
+it is preferable to create a class Point with members x and y,
+and then derive the other classes from that class.
+{% highlight cpp %}
+...
+template <typename T>
+class Point
+{
+public:
+  T x;
+  T y;
+};
+
+class Circle:public Point<double>
+{
+public:
+  int radius;
+};
+
+class Rectangle:public Point<int> 
+{
+public:
+  int width;
+  int height;
+};
+
+class Label:public Point<float>
+{
+public:
+  string name;
+};
+...
+  translate(0.1, 0.2, c);
+  translate(0.1, 0.2, l);
+  translate(1, 2, r);
+...
+{% endhighlight %}
+
 Consider again procedure translate:
 {% highlight cpp %}
 template <typename T1, typename T2>
@@ -252,25 +291,23 @@ Note that dx and dy have the same types T1.
 This can cause a compiler error if dx is an integer and dy is a float
 of vice versa.
 {% highlight cpp %}
-  translate(1, 0.2, c);
-  translate(0.1, 0, l);
+44.  translate(1, 0.2, c);
+45.  translate(0.1, 0, l);
 {% endhighlight %}
 
 Compiling the above code generates the following compiler errors:
 {% highlight cpp %}
 >  g++ translate_error1.cpp
 translate_error1.cpp: In function 'int main()':
-translate_error1.cpp:40: error: no matching function 
-    for call to 'translate(int, double, Circle&)'
-translate_error1.cpp:41: error: no matching function 
-    for call to 'translate(double, int, Label&)
+translate_error1.cpp:44: error: no matching function for call to 'translate(int, double, Circle&)'
+translate_error1.cpp:45: error: no matching function for call to 'translate(double, int, Label&)'
 {% endhighlight %}
 
 One solution is to use only floats.
 The following code compiles without errors:
 {% highlight cpp %}
-  translate(1.0, 0.2, c);
-  translate(0.1, 0.0, l);
+translate(1.0, 0.2, c);
+translate(0.1, 0.0, l);
 {% endhighlight %}
 
 Another solution is to use separate types for dx and dy.
