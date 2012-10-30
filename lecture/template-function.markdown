@@ -177,7 +177,121 @@ Note that the result also may have a different type.
 This creates the potential for numerical error if result has type int
 while the arrays have type float or double.
 
-## Examples of function templates
+## Examples of function template translate
+
+Function templates can be used to perform the same operation
+on different objects.
+For instance, the following function template
+adds (dx,dy) to an objects x and y locations.
+{% highlight cpp %}
+template <typename T1, typename T2>
+void translate(const T1 dx, const T1 dy,
+               T2 & object)
+{
+  object.x += dx;
+  object.y += dy;
+}
+{% endhighlight %}
+
+We can apply translate to any class which has members x and y:
+{% highlight cpp %}
+...
+class Circle
+{
+public:
+  double x;
+  double y;
+  int radius;
+};
+
+class Rectangle {
+public:
+  int x;
+  int y;
+  int width;
+  int height;
+};
+
+class Label
+{
+public:
+  float x;
+  float y;
+  string name;
+};
+
+
+int main()
+{
+  Circle c;
+  Rectangle r;
+  Label l;
+...
+  translate(0.1, 0.2, c);
+  translate(1, 2, r);
+  translate(0.1, 0.2, l);
+...
+{% endhighlight %}
+
+Note that classes Circle, Rectangle and Label have different types for x and y
+and have additional members other than x and y.
+All that is necessary is that the class have a member x and a member y.
+
+Consider again procedure translate:
+{% highlight cpp %}
+template <typename T1, typename T2>
+void translate(const T1 dx, const T1 dy,
+               T2 & object)
+{
+  object.x += dx;
+  object.y += dy;
+}
+{% endhighlight %}
+
+Note that dx and dy have the same types T1.
+This can cause a compiler error if dx is an integer and dy is a float
+of vice versa.
+{% highlight cpp %}
+  translate(1, 0.2, c);
+  translate(0.1, 0, l);
+{% endhighlight %}
+
+Compiling the above code generates the following compiler errors:
+{% highlight cpp %}
+>  g++ translate_error1.cpp
+translate_error1.cpp: In function 'int main()':
+translate_error1.cpp:40: error: no matching function 
+    for call to 'translate(int, double, Circle&)'
+translate_error1.cpp:41: error: no matching function 
+    for call to 'translate(double, int, Label&)
+{% endhighlight %}
+
+One solution is to use only floats.
+The following code compiles without errors:
+{% highlight cpp %}
+  translate(1.0, 0.2, c);
+  translate(0.1, 0.0, l);
+{% endhighlight %}
+
+Another solution is to use separate types for dx and dy.
+In the following code, parameter dx has template type T1
+while parameter dy has template type T2.
+The code compiles without errors:
+{% highlight cpp %}
+template <typename T1, typename T2, typename T3>
+void translate(const T1 dx, const T2 dy,
+               T3 & object)
+{
+  object.x += dx;
+  object.y += dy;
+}
+...
+  translate(1, 0.2, c);
+  translate(0.1, 0, l);
+...
+{% endhighlight %}
+
+## Examples of function template print_coord
 
 Function templates can be used to perform the same operation
 on different objects.
