@@ -1,0 +1,131 @@
+---
+title: STL algorithms: Searching and Sorting
+layout: default
+---
+
+## The Standard Template Library
+
+The designers of C++ realized that there are many extremely useful
+basic data structures and procedures.
+beyond the basic types and operators supplied by C++.
+Instead of creating a bloated language by adding these 
+to the language definition,
+they defined the C++ Standard Template Library (STL).
+The C++ Standard Template Library is a set of template specifications
+of some basic data structures and procedures.
+These are independent from the language definition.
+
+The C++ Standard Template Library is implemented as a set of C++ templates.
+There are many implementations of the Standard Template Library
+but they all must conform to the specifications set
+by the ISO (International Organization for Standards) C++ Standards Committee.
+Routines and classes in the C++ Standard Template Library are
+in the namespace std.
+
+The template class vector is part of the Standard Template Library.
+The Standard Template Library also contains a template class list
+for constructing linked lists.
+In this section, we will talk about some algorithms provided 
+by the Standard Template Library.
+
+## Iterators
+
+Algorithms in the Standard Template Library (STL) use iterators.
+Iterators store references to individual vector or list elements.
+An interator for vector<int> (vector of type int) is defined as:
+{% highlight cpp %}
+  vector<int>::iterator iter;
+{% endhighlight %}
+The iterator iter has type vector<int>::iterator.
+
+Every STL vector vector has a member function begin() 
+which returns an iterator for the first element of the vector or list
+and a member function end() which represents the end of the vector or list.
+If iterator iter references some element of a vector or list,
+then iter++ is the next element of the vector or list.
+If iter refers to the last element of the vector v or list l,
+then iter++ equals v.end() or l.end().
+
+The following example prints all elements of a vector using a vector iterator:
+{% highlight cpp %}
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+  vector<int> v;
+
+  for (int i = 3; i < 7; i++) 
+    { v.push_back(2*i); }
+
+  for (vector<int>::iterator iter = v.begin();
+       iter != v.end(); iter++)
+    { cout << " " << *iter; }
+  cout << endl;
+
+  return 0;
+}
+{% endhighlight %}
+
+The end of a vector is the position after the last element of the vector:
+![End of an array](/cse2122/images/array-3.png "End of array")
+
+## Algorithm min_element
+
+The function template min_element returns a reference to the minimum element
+in an array, vector or list.
+The include file algorithm contains the definition of min_element.
+We pass min_element a pointer to the beginning of the array 
+and a pointer to the address after the last element in the array.
+(Array arr has entries arr[0],arr[1],...,arr[LENGTH-1].
+The address of the last element in array arr is (arr+LENGTH-1).
+This computation uses pointer arithmetic.
+The address after the last element is (arr+LENGTH).)
+Function min_element returns a pointer to the minimum element in the array.
+{% highlight cpp %}
+#include <iostream>
+#include <algorithm>  // STL algorithms are contained in file algorithm.
+using namespace std;
+
+int main()
+{
+  const int LENGTH = 5;
+  int arr[LENGTH] = { 7, 4, 5, 2, 8 };
+
+  // Note: min_element returns a pointer to the min element.
+  int * min_arr_ptr = min_element(arr, arr+LENGTH);
+  cout << "Min element of array arr: " << *min_arr_ptr << endl;
+
+  return 0;
+}
+{% endhighlight %}
+
+Function min_element can also be applied to an STL vector or list.
+We pass min_element v.begin() and v.end() where v.begin()
+is an iterator marking the beginning of the list and
+v.end() is an iterator marking the end of the list.
+{% highlight cpp %}
+#include <iostream>
+#include <algorithm>  // STL algorithms are contained in file algorithm.
+#include <vector>
+using namespace std;
+
+int main()
+{
+  const int LENGTH = 5;
+  int arr[LENGTH] = { 7, 4, 5, 2, 8 };
+  vector<int> v;
+
+  for (int i = 0; i < LENGTH; i++) 
+    { v.push_back(10*arr[i]); }
+
+  // Note: min_element returns a vector iterator (reference into vector.)
+  vector<int>::iterator min_v_iter = min_element(v.begin(), v.end());
+  cout << "Min element of vector v: " << *min_v_iter << endl;
+
+  return 0;
+}
+{% endhighlight %}
+
+
