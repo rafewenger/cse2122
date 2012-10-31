@@ -69,6 +69,7 @@ int main()
 {% endhighlight %}
 
 The end of a vector is the position after the last element of the vector:
+
 ![End of an array](/cse2122/images/array-3.png "End of array")
 
 ## Algorithm min_element
