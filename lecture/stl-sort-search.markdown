@@ -98,7 +98,9 @@ int main()
 }
 {% endhighlight %}
 
-The adress after the last element in the array is (arr+LENGTH) = (arr+5):
+The address after the last element in array arr is (arr+LENGTH) = (arr+5).
+(Note that array arr is a pointer so (arr+5) is addition 
+in pointer arithmetic.)
 
 ![Array arr](/cse2122/images/array-4.png "Array arr")
 
