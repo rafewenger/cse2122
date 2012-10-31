@@ -99,6 +99,7 @@ int main()
 {% endhighlight %}
 
 The address after the last element in array arr is (arr+LENGTH) = (arr+5).
+This address is used to represent the end of the array.
 (Note that array arr is a pointer so (arr+5) is addition 
 in pointer arithmetic.)
 
@@ -131,4 +132,48 @@ int main()
 }
 {% endhighlight %}
 
+
+## Algorithm find
+
+The function template find returns a reference to a given element
+in a C array, a C++ vector or a C++ list.
+The include file algorithm contains the definition of function find.
+We pass find a pointer to the beginning of the array,
+and a pointer to the address after the last element in the array,
+and a value x.
+Function find returns a pointer to the element in the array
+which equals x.
+If there is no such element,
+then find returns a pointer to the address after the last element in the array.
+{% highlight cpp %}
+#include <iostream>
+#include <algorithm>  // STL algorithms are contained in file algorithm.
+using namespace std;
+
+int main()
+{
+  const int LENGTH = 5;
+  int arr[LENGTH] = { 7, 4, 5, 2, 8 };
+  int x;
+
+  cout << "Enter x: ";
+  cin >> x;
+
+  // Note: find returns a pointer to the element found.
+  int * x_ptr = find(arr, arr+LENGTH, x);
+
+  if (x_ptr == arr+LENGTH) {
+    cout << "Element not found." << endl;
+  }
+  else {
+    cout << "Element is a[" << x_ptr-arr << "]." << endl;
+  }
+
+  return 0;
+}
+{% endhighlight %}
+
+The address after the last element in the array is (arr+LENGTH).
+This address represents the end of the array.
+If x_ptr point to a[i], then i equals (x_ptr-arr).
 
