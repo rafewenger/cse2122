@@ -311,8 +311,8 @@ int main()
 ## Comparison function
 
 So far we are searching or sorting simple objects.
-What if we want to search or sort an array of C++ classes?
-For instance, let's say we want to sort an array of the following class
+What if we want to search or sort an array/vector of C++ classes?
+For instance, let's say we want to sort a vector of the following class
 by age:
 {% highlight cpp %}
 class Person {
@@ -348,7 +348,8 @@ To sort a vector of type Person by age:
 If we wish to sort by name instead of by age,
 define a comparison function which returns true if p1.name
 is less than p2.name:
-{% highlight cpp %}bool compare_name(const Person & p1, const Person & p2)
+{% highlight cpp %}
+bool compare_name(const Person & p1, const Person & p2)
 {
   if (p1.name < p2.name) { return(true); }
   else { return(false); }
@@ -358,4 +359,44 @@ is less than p2.name:
 ...
   sort(v.begin(), v.end(), compare_name);
 ...
+{% endhighlight %}
+
+Sometimes we may wish to represent the sorted order
+of an array of objects without sorting the array.
+We can create an array or vector of pointers to the array
+and sort the pointers.
+We first define a comparison function which compares pointers:
+{% highlight cpp %}
+bool compare_age(const Person * p1, const Person * p2)
+{
+  if (p1->age < p2->age) { return(true); }
+  else { return(false); }
+}
+{% endhighlight %}
+
+Given an array of type Person, we create a vector of pointers
+to the array and sort the pointers:
+{% highlight cpp %}
+...
+int main()
+{
+  const int LENGTH = 3;
+  Person arr[LENGTH] = 
+    { {"John", 10}, {"Amy", 25}, {"David", 13}};
+  vector<Person *> v;
+
+  // v[i] is the address of arr[i].
+  for (int i = 0; i < LENGTH; i++)
+    { v.push_back(arr+i); }
+
+  sort(v.begin(), v.end(), compare_age);
+
+  // Output the elements of arr[] in the order given by v[].
+  for (vector<Person *>::iterator iter = v.begin();
+       iter != v.end(); iter++) 
+    { cout << (*iter)->name << ", " << (*iter)->age << endl; }
+  cout << endl;
+
+  return 0;
+}
 {% endhighlight %}
