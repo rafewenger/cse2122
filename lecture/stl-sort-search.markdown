@@ -177,3 +177,37 @@ The address after the last element in the array is (arr+LENGTH).
 This address represents the end of the array.
 If x_ptr point to a[i], then i equals (x_ptr-arr).
 
+To apply find to an STL vector v, pass v.begin(), v.end()
+and the value x to find.
+{% highlight cpp %}
+#include <iostream>
+#include <algorithm>  // STL algorithms are contained in file algorithm.
+#include <vector>
+using namespace std;
+
+int main()
+{
+  const int LENGTH = 5;
+  int arr[LENGTH] = { 7, 4, 5, 2, 8 };
+  vector<int> v;
+  int x;
+
+  for (int i = 0; i < LENGTH; i++) 
+    { v.push_back(10*arr[i]); }
+
+  cout << "Enter x: ";
+  cin >> x;
+
+  // Note: find returns a vector iterator.
+  vector<int>::iterator x_iter = find(v.begin(), v.end(), x);
+
+  if (x_iter == v.end()) {
+    cout << "Element not found." << endl;
+  }
+  else {
+    cout << "Element is v[" << x_iter-v.begin() << "]." << endl;
+  }
+
+  return 0;
+}
+{% endhighlight %}
