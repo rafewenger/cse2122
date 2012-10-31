@@ -179,6 +179,7 @@ If x_ptr point to a[i], then i equals (x_ptr-arr).
 
 To apply find to an STL vector v, pass v.begin(), v.end()
 and the value x to find.
+If no element has value x, then find will v.end().
 {% highlight cpp %}
 #include <iostream>
 #include <algorithm>  // STL algorithms are contained in file algorithm.
