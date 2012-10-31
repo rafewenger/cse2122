@@ -75,14 +75,10 @@ The end of a vector is the position after the last element of the vector:
 ## Algorithm min_element
 
 The function template min_element returns a reference to the minimum element
-in an array, vector or list.
+in a C array, a C++ vector or a C++ list.
 The include file algorithm contains the definition of min_element.
 We pass min_element a pointer to the beginning of the array 
 and a pointer to the address after the last element in the array.
-(Array arr has entries arr[0],arr[1],...,arr[LENGTH-1].
-The address of the last element in array arr is (arr+LENGTH-1).
-This computation uses pointer arithmetic.
-The address after the last element is (arr+LENGTH).)
 Function min_element returns a pointer to the minimum element in the array.
 {% highlight cpp %}
 #include <iostream>
@@ -101,6 +97,10 @@ int main()
   return 0;
 }
 {% endhighlight %}
+
+The adress after the last element in the array is (arr+LENGTH) = (arr+5):
+
+![Array arr](/cse2122/images/array-4.png "Array arr")
 
 Function min_element can also be applied to an STL vector or list.
 We pass min_element v.begin() and v.end() where v.begin()
