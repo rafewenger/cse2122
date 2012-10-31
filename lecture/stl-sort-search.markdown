@@ -107,8 +107,8 @@ in pointer arithmetic.)
 
 Function min_element can also be applied to an STL vector or list.
 We pass min_element v.begin() and v.end() where v.begin()
-is an iterator marking the beginning of the list and
-v.end() is an iterator marking the end of the list.
+is an iterator marking the beginning of the vector and
+v.end() is an iterator marking the end of the vector.
 {% highlight cpp %}
 #include <iostream>
 #include <algorithm>  // STL algorithms are contained in file algorithm.
@@ -208,6 +208,69 @@ int main()
   else {
     cout << "Element is v[" << x_iter-v.begin() << "]." << endl;
   }
+
+  return 0;
+}
+{% endhighlight %}
+
+## Sorting
+
+The Standard Template Library has a sorting algorithm.
+While the Standard Template Library does not specify 
+which sorting algorithm must be used,
+all implementations use a combination of quicksort and insertion sort.
+Generally, these implementations have been extensively tested
+for correctness and speed.
+Unless your data has special properties,
+you are best using the sort function from the Standard Template Library.
+
+The include file algorithm contains the definition of function sort.
+We pass sort a pointer to the beginning of the array,
+and a pointer to the address after the last element in the array.
+Function sort reorders the elements of the array in increasing order.
+
+{% highlight cpp %}
+#include <iostream>
+#include <algorithm>  // STL algorithms are contained in file algorithm.
+using namespace std;
+
+int main()
+{
+  const int LENGTH = 5;
+  int arr[LENGTH] = { 7, 4, 5, 2, 8 };
+
+  sort(arr, arr+LENGTH);
+
+  for (int i = 0; i < LENGTH; i++)
+    { cout << " " << arr[i]; }
+  cout << endl;
+
+  return 0;
+}
+{% endhighlight %}
+
+To apply sort to a vector v,
+we pass v.begin() and v.end() to sort.
+{% highlight cpp %}
+#include <iostream>
+#include <algorithm>  // STL algorithms are contained in file algorithm.
+#include <vector>
+using namespace std;
+
+int main()
+{
+  const int LENGTH = 5;
+  int arr[LENGTH] = { 7, 4, 5, 2, 8 };
+  vector<int> v;
+
+  for (int i = 0; i < LENGTH; i++) 
+    { v.push_back(10*arr[i]); }
+
+  sort(v.begin(), v.end());
+
+  for (int i = 0; i < LENGTH; i++)
+    { cout << " " << v[i]; }
+  cout << endl;
 
   return 0;
 }
