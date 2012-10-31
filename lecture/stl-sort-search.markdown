@@ -268,10 +268,94 @@ int main()
 
   sort(v.begin(), v.end());
 
-  for (int i = 0; i < LENGTH; i++)
-    { cout << " " << v[i]; }
+  for (vector<int>::iterator iter = v.begin();
+       iter != v.end(); iter++)
+    { cout << " " << *iter; };
   cout << endl;
 
   return 0;
 }
+{% endhighlight %}
+
+We can also sort a vector of strings.  
+Note that the iterator has type vector<string>::iterator.
+
+{% highlight cpp %}
+#include <iostream>
+#include <algorithm>  // STL algorithms are contained in file algorithm.
+#include <string>
+#include <vector>
+using namespace std;
+
+int main()
+{
+  vector<string> v;
+
+  v.push_back("School");
+  v.push_back("interferes");
+  v.push_back("with");
+  v.push_back("my");
+  v.push_back("education");
+
+  sort(v.begin(), v.end());
+
+  for (vector<string>::iterator iter = v.begin();
+       iter != v.end(); iter++)
+    { cout << " " << *iter; };
+  cout << endl;
+
+  return 0;
+}
+{% endhighlight %}
+
+## Comparison function
+
+So far we are searching or sorting simple objects.
+What if we want to search or sort an array of C++ classes?
+For instance, let's say we want to sort an array of the following class
+by age:
+{% highlight cpp %}
+class Person {
+public:
+  string name;
+  int age;
+};
+{% endhighlight %}
+
+Function sort needs to know how to compare to objects of type person.
+Fortunately, sort accepts a third parameter which is a comparison operator.
+We define a comparison function which takes two variables, p1 and p2, 
+of type Person and returns true if p1.age is less than p2.age.
+Otherwise, it returns false.
+{% highlight cpp %}
+bool compare_age(const Person & p1, const Person & p2)
+{
+  if (p1.age < p2.age) { return(true); }
+  else { return(false); }
+}
+{% endhighlight %}
+Note that the two parameters are both constants.
+
+To sort a vector of type Person by age:
+{% highlight cpp %}
+...
+  vector<Person> v;
+...
+  sort(v.begin(), v.end(), compare_age);
+...
+{% endhighlight %}
+
+If we wish to sort by name instead of by age,
+define a comparison function which returns true if p1.name
+is less than p2.name:
+{% highlight cpp %}bool compare_name(const Person & p1, const Person & p2)
+{
+  if (p1.name < p2.name) { return(true); }
+  else { return(false); }
+}
+...
+  vector<Person> v;
+...
+  sort(v.begin(), v.end(), compare_name);
+...
 {% endhighlight %}
